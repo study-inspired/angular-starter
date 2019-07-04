@@ -1,8 +1,18 @@
-# AngularNgrxMaterialStarter
+# Angular NgRx Material Starter
 
-https://angular-ngrx-material-starter.firebaseapp.com/
+## Table of Content
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
+- [Live Demo](https://angular-ngrx-material-starter.firebaseapp.com/)
+- [Getting Started](#getting-started)
+
+## Getting started
+
+```bash
+git clone https://github.com/truonghungit/angular-ngrx-material-starter.git new-project
+cd new-project
+npm install
+npm start
+```
 
 ## Development server
 
