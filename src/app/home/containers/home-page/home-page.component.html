@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Angular NgRx Material Starter</span>
+
+    <span class="spacer"></span>
+
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="languageMenu">EN</button>
+
+      <mat-menu #languageMenu="matMenu">
+        <button mat-menu-item>
+          <span>English (United States)</span>
+        </button>
+
+        <button mat-menu-item>
+          <span>Tiếng Việt (Việt Nam)</span>
+        </button>
+
+      </mat-menu>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>

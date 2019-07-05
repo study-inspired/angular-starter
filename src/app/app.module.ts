@@ -13,7 +13,12 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([
+      {
+        path: '',
+        loadChildren: './home/home.module#HomeModule'
+      }
+    ]),
 
     CoreModule
   ],
