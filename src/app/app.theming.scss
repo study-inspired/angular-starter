@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+
+// @import './home/home-page/home-page.component.theme';
+
+@mixin app-theme($theme) {
+  // @include home-page-theme($theme);
+}
