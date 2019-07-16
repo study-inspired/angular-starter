@@ -1,5 +1,7 @@
 # Angular NgRx Material Starter
 
+[![CircleCI](https://circleci.com/gh/truonghungit/angular-ngrx-material-starter/tree/master.svg?style=svg)](https://circleci.com/gh/truonghungit/angular-ngrx-material-starter/tree/master)
+
 ## Table of Content
 
 - [Live Demo](https://angular-ngrx-material-starter.firebaseapp.com/)
