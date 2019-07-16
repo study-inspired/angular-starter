@@ -1,4 +1,4 @@
-# Angular NgRx Material Starter
+# Angular 8 NgRx Material Starter
 
 ![CircleCI](https://img.shields.io/circleci/build/github/truonghungit/angular-ngrx-material-starter/master.svg?style=flat-square)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
