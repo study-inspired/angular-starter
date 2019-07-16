@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from '@app/core';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   imports: [
@@ -14,13 +14,7 @@ import { AuthModule } from './auth';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    RouterModule.forRoot([
-      {
-        path: '',
-        loadChildren: './home/home.module#HomeModule'
-      }
-    ]),
-
+    AppRoutingModule,
     CoreModule,
     AuthModule
   ],
