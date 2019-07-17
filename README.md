@@ -1,7 +1,7 @@
 # Angular 8 NgRx Material Starter
 
-![CircleCI](https://img.shields.io/circleci/build/github/truonghungit/angular-ngrx-material-starter/master.svg?style=flat-square)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![CircleCI](https://img.shields.io/circleci/build/github/truonghungit/angular-ngrx-material-starter/master.svg?style=flat-square)](https://circleci.com/gh/truonghungit/angular-ngrx-material-starter)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 ![GitHub last commit](https://img.shields.io/github/last-commit/truonghungit/angular-ngrx-material-starter.svg?style=flat-square)
 
 ## Table of Content
