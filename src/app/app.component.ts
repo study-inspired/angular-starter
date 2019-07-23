@@ -22,6 +22,6 @@ export class AppComponent {
     ).subscribe(() => {
       const splashScreen = document.querySelector('#splash-screen');
       this.renderer.setStyle(splashScreen, 'display', 'none');
-    })
+    });
   }
 }

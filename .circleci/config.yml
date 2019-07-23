@@ -40,5 +40,9 @@ jobs:
           command: npm run build:prod
 
       - run:
-          name: Run unit test
-          command: npm run test:ci
+          name: Check TSLint
+          command: npm run lint
+
+      # - run:
+          # name: Run unit test
+          # command: npm run test:ci

@@ -31,13 +31,13 @@ export class NotificationService {
         break;
 
       case 'warn':
-        panelClass = 'warning-notification'
+        panelClass = 'warning-notification';
         break;
     }
 
     const config: MatSnackBarConfig = {
       duration: -1,
-      panelClass: panelClass,
+      panelClass,
       horizontalPosition: 'right',
       verticalPosition: 'bottom',
       data: {
@@ -45,8 +45,8 @@ export class NotificationService {
         title: options.title,
         action: options.action,
         image: options.image,
-        type: type,
-        duration: duration
+        type,
+        duration
       },
       ...options.config
     };
