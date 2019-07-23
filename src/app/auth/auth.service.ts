@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Credential } from './models/credential.model';
+import { AUTH_CONFIGURATION, AuthConfiguration } from './auth.config';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(AUTH_CONFIGURATION) private config: AuthConfiguration
+  ) { }
 
   public login(credential: Credential): Observable<any> {
-    return this.http.post('login', credential);
-  }
-
-  public refreshToken(token: string): Observable<any> {
-    return this.http.post('refresh', { token: token });
+    return this.http.post(this.config.loginApiUrl, credential);
   }
 
 }

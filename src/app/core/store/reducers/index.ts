@@ -1,5 +1,5 @@
-import { ActionReducerMap, MetaReducer } from '@ngrx/store';
-import { RouterReducerState, routerReducer } from '@ngrx/router-store';
+import { ActionReducerMap, MetaReducer, Action } from '@ngrx/store';
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 
 import { storeFreeze } from 'ngrx-store-freeze';
 
@@ -11,7 +11,7 @@ export interface AppState {
   router: RouterReducerState<RouterStateModel>;
 }
 
-export const reducers: ActionReducerMap<AppState> = {
+export const reducers: ActionReducerMap<AppState, Action> = {
   router: routerReducer
 };
 

@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, distinctUntilChanged, take } from 'rxjs/operators';
 
-import { AuthConfig } from './auth.config';
+import { AUTH_CONFIGURATION, AuthConfiguration } from './auth.config';
 import { AuthState } from './auth.reducer';
 import { selectIsAuthenticated } from './auth.selectors';
 
@@ -12,7 +12,8 @@ import { selectIsAuthenticated } from './auth.selectors';
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private store: Store<AuthState>
+    private store: Store<AuthState>,
+    @Inject(AUTH_CONFIGURATION) private config: AuthConfiguration,
   ) { }
 
   canActivate(
@@ -20,9 +21,11 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     return this.store.pipe(
       select(selectIsAuthenticated),
+      distinctUntilChanged(),
+      take(1),
       tap(isAuthenticated => {
         if (!isAuthenticated) {
-          this.router.navigate([AuthConfig.loginURI]);
+          this.router.navigate([this.config.loginURI]);
         }
       })
     );

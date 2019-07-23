@@ -14,7 +14,15 @@ import { CustomRouterStateSerializer } from './router';
   imports: [
     CommonModule,
 
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true,
+      },
+    }),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     environment.production ? [] : StoreDevtoolsModule.instrument({
       name: 'angular-ngrx-material-starter-app'

@@ -1,34 +1,23 @@
-import { AuthActions, AuthActionTypes } from './auth.actions';
-import { AuthToken } from './models';
+import { createReducer, on, Action } from '@ngrx/store';
 
+import { AuthToken, UserProfile } from './models';
+import { loginSuccess, logout } from './auth.actions';
 export interface AuthState {
-  isAuthenticated: boolean;
   authToken: AuthToken;
+  loggedInUser: UserProfile;
 }
 
-export const initialState: AuthState = {
-  isAuthenticated: false,
-  authToken: {
-    accessToken: 'hahah',
-    expiresIn: 7200
-  }
+const initialState: AuthState = {
+  authToken: undefined,
+  loggedInUser: undefined
 };
 
-export function reducer(state = initialState, action: AuthActions): AuthState {
-  switch (action.type) {
+const reducer = createReducer(
+  initialState,
+  on(loginSuccess, (state, { authToken, loggedInUser }) => ({ ...state, authToken, loggedInUser })),
+  on(logout, () => initialState)
+);
 
-    case AuthActionTypes.LOGIN:
-      return state;
-
-    case AuthActionTypes.LOGIN_SUCCESS:
-      return {
-        ...state,
-        isAuthenticated: true,
-        authToken: action.payload.authToken
-      };
-
-
-    default:
-      return state;
-  }
+export function authReducer(state: AuthState, action: Action) {
+  return reducer(state, action);
 }

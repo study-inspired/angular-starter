@@ -1,46 +1,21 @@
-import { Action } from '@ngrx/store';
-import { Credential } from './models/credential.model';
-import { UserProfile } from './models/user.model';
-import { AuthToken } from './models/auth-token.model';
+import { createAction, props } from '@ngrx/store';
+import { AuthToken, Credential, UserProfile } from './models';
 
-export enum AuthActionTypes {
-  LOGIN = '[Login Page] Login',
-  LOGIN_SUCCESS = '[Auth/API] Login Success',
-  LOGIN_FAILURE = '[Auth/API] Login Failure',
-  LOGIN_REDIRECT = '[Auth/API] Login Redirect',
+export const login = createAction(
+  '[Login Page] Login',
+  props<{ credential: Credential }>()
+);
 
-  LOCK = '[Auth] Lock screen',
-  LOGOUT = '[Auth] Logout'
-}
+export const loginSuccess = createAction(
+  '[Auth/API] Login Success',
+  props<{ authToken: AuthToken, loggedInUser: UserProfile }>()
+);
 
-export class Login implements Action {
-  readonly type = AuthActionTypes.LOGIN;
+export const loginFailure = createAction(
+  '[Login Page] Login Failure',
+  props<{ error: any }>()
+);
 
-  constructor(public payload: { credential: Credential }) { }
-}
-
-export class LoginSuccess implements Action {
-  readonly type = AuthActionTypes.LOGIN_SUCCESS;
-
-  constructor(public payload: { authToken: AuthToken }) { }
-}
-
-export class LoginFailure implements Action {
-  readonly type = AuthActionTypes.LOGIN_FAILURE;
-
-  constructor(public payload: { error: any }) { }
-}
-
-export class LoginRedirect implements Action {
-  readonly type = AuthActionTypes.LOGIN_REDIRECT;
-}
-
-export class Lock implements Action {
-  readonly type = AuthActionTypes.LOCK;
-}
-
-export class Logout implements Action {
-  readonly type = AuthActionTypes.LOGOUT;
-}
-
-export type AuthActions = Login | LoginSuccess | LoginFailure | LoginRedirect | Lock | Logout;
+export const loginRedirect = createAction('[Login Page] Login Redirect');
+export const lock = createAction('[Auth] Lock screen');
+export const logout = createAction('[Auth] Logout');
