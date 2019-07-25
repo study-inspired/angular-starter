@@ -3,7 +3,7 @@
   <img src="meta/images/logo.png">
   
   <br />
-
+  <p align="center">
   Angular 8 NgRx & Material Starter
   <br /><br />
 
@@ -16,6 +16,7 @@
   <a href="https://github.com/truonghungit/angular-ngrx-material-starter/commits">
     <img src="https://img.shields.io/github/last-commit/truonghungit/angular-ngrx-material-starter.svg?style=flat-square" />
   </a>
+  </p>
 </p>
 
 ---
