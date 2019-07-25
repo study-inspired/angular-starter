@@ -1,8 +1,20 @@
-# Angular 8 NgRx Material Starter
 
-[![CircleCI](https://img.shields.io/circleci/build/github/truonghungit/angular-ngrx-material-starter/master.svg?style=flat-square)](https://circleci.com/gh/truonghungit/angular-ngrx-material-starter)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-![GitHub last commit](https://img.shields.io/github/last-commit/truonghungit/angular-ngrx-material-starter.svg?style=flat-square)
+<p style="text-align: center; margin-bottom: 0;"><img src="meta/images/logo.png"></p>
+<p style="font-size: 40px; text-align: center; margin-bottom: 0;" >Angular 8 NgRx & Material Starter</p>
+<p style="text-align: center; margin-bottom: 0;">
+  <a href="https://circleci.com/gh/truonghungit/angular-ngrx-material-starter">
+    <img src="https://img.shields.io/circleci/build/github/truonghungit/angular-ngrx-material-starter/master.svg?style=flat-square" />
+  </a>
+  <a href="https://github.com/prettier/prettier">
+    <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" />
+  </a>
+  <a href="https://github.com/truonghungit/angular-ngrx-material-starter/commits">
+    <img src="https://img.shields.io/github/last-commit/truonghungit/angular-ngrx-material-starter.svg?style=flat-square" />
+  </a>
+</p>
+
+---
+
 
 ## Table of Content
 
