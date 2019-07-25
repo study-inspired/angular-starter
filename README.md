@@ -1,7 +1,12 @@
 
-<p style="text-align: center; margin-bottom: 0;"><img src="meta/images/logo.png"></p>
-<p style="font-size: 40px; text-align: center; margin-bottom: 0;" >Angular 8 NgRx & Material Starter</p>
-<p style="text-align: center; margin-bottom: 0;">
+<p align="center">
+  <img src="meta/images/logo.png">
+  
+  <br />
+
+  Angular 8 NgRx & Material Starter
+  <br /><br />
+
   <a href="https://circleci.com/gh/truonghungit/angular-ngrx-material-starter">
     <img src="https://img.shields.io/circleci/build/github/truonghungit/angular-ngrx-material-starter/master.svg?style=flat-square" />
   </a>
