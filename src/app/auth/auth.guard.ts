@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap, distinctUntilChanged, take } from 'rxjs/operators';
@@ -16,9 +16,7 @@ export class AuthGuard implements CanActivate {
     @Inject(AUTH_CONFIGURATION) private config: AuthConfiguration,
   ) { }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     return this.store.pipe(
       select(selectIsAuthenticated),
       distinctUntilChanged(),

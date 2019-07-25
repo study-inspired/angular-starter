@@ -1,25 +1,34 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatIconModule, MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material';
 
 import { NotificationComponent } from './notification.component';
 
 describe('NotificationComponent', () => {
-  let component: NotificationComponent;
-  let fixture: ComponentFixture<NotificationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationComponent ]
+      imports: [
+        MatIconModule
+      ],
+      providers: [
+        { provide: MatSnackBarRef, useValue: {} },
+        { provide: MAT_SNACK_BAR_DATA, useValue: {} }
+      ],
+      declarations: [NotificationComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NotificationComponent);
-    component = fixture.componentInstance;
+  function setup() {
+    const fixture: ComponentFixture<NotificationComponent> = TestBed.createComponent(NotificationComponent);
+    const component: NotificationComponent = fixture.componentInstance;
     fixture.detectChanges();
-  });
 
-  it('should create', () => {
+    return { fixture, component };
+  }
+
+  it('Should create the notification component', () => {
+    const { component } = setup();
     expect(component).toBeTruthy();
   });
 });

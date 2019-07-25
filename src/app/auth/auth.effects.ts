@@ -19,6 +19,7 @@ export class AuthEffects {
           // TODO
           const authToken: AuthToken = new AuthToken('jasjdhfkjasd', 7200);
           const loggedInUser: UserProfile = { id: '12345', username: 'user 1' };
+
           return loginSuccess({ authToken, loggedInUser });
         }),
         catchError(error => of(loginFailure({ error })))

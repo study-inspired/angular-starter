@@ -3,23 +3,24 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginPageComponent } from './login-page.component';
 
 describe('LoginPageComponent', () => {
-  let component: LoginPageComponent;
-  let fixture: ComponentFixture<LoginPageComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginPageComponent ]
+      declarations: [LoginPageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginPageComponent);
-    component = fixture.componentInstance;
+  function setup() {
+    const fixture: ComponentFixture<LoginPageComponent> = TestBed.createComponent(LoginPageComponent);
+    const component: LoginPageComponent = fixture.componentInstance;
     fixture.detectChanges();
-  });
 
-  it('should create', () => {
+    return { fixture, component };
+  }
+
+  it('Should create the login page component', () => {
+    const { component } = setup();
     expect(component).toBeTruthy();
   });
+
 });

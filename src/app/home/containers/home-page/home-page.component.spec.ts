@@ -1,25 +1,35 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  MatToolbarModule,
+  MatMenuModule,
+  MatButtonModule
+} from '@angular/material';
 
 import { HomePageComponent } from './home-page.component';
 
 describe('HomePageComponent', () => {
-  let component: HomePageComponent;
-  let fixture: ComponentFixture<HomePageComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePageComponent ]
+      imports: [
+        MatToolbarModule,
+        MatMenuModule,
+        MatButtonModule
+      ],
+      declarations: [HomePageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HomePageComponent);
-    component = fixture.componentInstance;
+  function setup() {
+    const fixture: ComponentFixture<HomePageComponent> = TestBed.createComponent(HomePageComponent);
+    const component: HomePageComponent = fixture.componentInstance;
     fixture.detectChanges();
-  });
 
-  it('should create', () => {
+    return { fixture, component };
+  }
+
+  it('Should create the home component', () => {
+    const { component } = setup();
     expect(component).toBeTruthy();
   });
 });

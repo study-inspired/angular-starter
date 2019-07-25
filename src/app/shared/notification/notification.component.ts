@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject, HostBinding, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, HostListener, OnDestroy } from '@angular/core';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material';
 import { timer, Subject, Subscription } from 'rxjs';
-import { takeUntil, skipWhile, skipUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-notification',

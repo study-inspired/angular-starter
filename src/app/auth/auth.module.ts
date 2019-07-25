@@ -19,12 +19,6 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class AuthModule {
-  constructor(@Optional() @SkipSelf() parentModule: AuthModule) {
-    if (parentModule) {
-      throw new Error('AuthModule is already loaded. Import only in AppModule!');
-    }
-  }
-
   static forRoot(config: AuthConfiguration): ModuleWithProviders {
 
     return {
@@ -44,4 +38,11 @@ export class AuthModule {
       ]
     };
   }
+
+  constructor(@Optional() @SkipSelf() parentModule: AuthModule) {
+    if (parentModule) {
+      throw new Error('AuthModule is already loaded. Import only in AppModule!');
+    }
+  }
+
 }

@@ -1,7 +1,14 @@
 {
-  "extends": "tslint:recommended",
+  "rulesDirectory": [
+    "codelyzer",
+    "tslint-lines-between-class-members"
+  ],
+  "extends": ["tslint:recommended"],
   "rules": {
-    "array-type": false,
+    "array-type": [
+      true,
+      "generic"
+    ],
     "arrow-parens": false,
     "deprecation": {
       "severity": "warning"
@@ -36,14 +43,28 @@
       true,
       {
         "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
+          "public-static-field",
+          "public-static-method",
+          "protected-static-field",
+          "protected-static-method",
+          "private-static-field",
+          "private-static-method",
+          "public-instance-field",
+          "protected-instance-field",
+          "private-instance-field",
+          "public-constructor",
+          "protected-constructor",
+          "private-constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
         ]
       }
     ],
-    "no-consecutive-blank-lines": false,
+    "no-consecutive-blank-lines": [
+      true,
+      1
+    ],
     "no-console": [
       true,
       "debug",
@@ -84,9 +105,99 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
-  },
-  "rulesDirectory": [
-    "codelyzer"
-  ]
+    "use-pipe-transform-interface": true,
+    "max-file-line-count": [
+      true,
+      500
+    ],
+    "no-any": false,
+    "unnecessary-else": [
+      true,
+      {
+        "allow-else-if": true
+      }
+    ],
+    "only-arrow-functions": [
+      true,
+      "allow-declarations",
+      "allow-named-functions"
+    ],
+    "typedef": [
+      true,
+      "parameter"
+    ],
+    "variable-name": [
+      true,
+      "check-format",
+      "allow-leading-underscore",
+      "require-const-for-all-caps",
+      "ban-keywords"
+    ],
+    "file-name-casing": [
+      true,
+      "kebab-case"
+    ],
+    "align": [
+      true,
+      "elements",
+      "members",
+      "parameters",
+      "statements"
+    ],
+    "semicolon": [
+      true,
+      "always",
+      "strict-bound-class-methods"
+    ],
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-whitespace",
+      "check-else",
+      "check-catch",
+      "check-finally"
+    ],
+    "newline-before-return": true,
+    "space-before-function-paren": [
+      true,
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always",
+        "method": "never",
+        "constructor": "never"
+      }
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-type",
+      "check-typecast",
+      "check-type-operator",
+      "check-preblock"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      }
+    ],
+    "curly": true,
+    "lines-between-class-members": true
+  }
 }

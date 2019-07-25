@@ -15,6 +15,6 @@ export const reducers: ActionReducerMap<AppState, Action> = {
   router: routerReducer
 };
 
-export const metaReducers: MetaReducer<AppState>[] = !env.production
+export const metaReducers: Array<MetaReducer<AppState>> = !env.production
   ? [logger, storeFreeze, localStorageSyncReducer]
   : [localStorageSyncReducer];

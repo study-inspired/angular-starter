@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NotificationService } from './notification.service';
+import { LocalStorageService } from './local-storage.service';
 
-xdescribe('NotificationService', () => {
+xdescribe('LocalStorageService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: NotificationService = TestBed.get(NotificationService);
+    const service: LocalStorageService = TestBed.get(LocalStorageService);
     expect(service).toBeTruthy();
   });
 });

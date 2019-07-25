@@ -2,7 +2,7 @@ import { Action, ActionReducer } from '@ngrx/store';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 export function localStorageSyncReducer<T, V extends Action = Action>(reducer: ActionReducer<any>): ActionReducer<T, V> {
-  const storageKeySerializer = (key) => {
+  const storageKeySerializer = () => {
     return 'APP_SESSION';
   };
 
