@@ -18,7 +18,7 @@ describe('LoginPageComponent', () => {
     return { fixture, component };
   }
 
-  it('Should create the login page component', () => {
+  it('should create the login page component', () => {
     const { component } = setup();
     expect(component).toBeTruthy();
   });

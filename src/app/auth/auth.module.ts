@@ -1,15 +1,15 @@
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { authFeatureKey, AUTH_CONFIGURATION, AuthConfiguration } from './auth.config';
 import { AuthGuard } from './auth.guard';
-import { AuthService } from './auth.service';
+import { AuthService } from './services';
 import { AuthEffects } from './auth.effects';
 import { authReducer } from './auth.reducer';
 import { AuthInterceptor } from './auth-interceptor';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [

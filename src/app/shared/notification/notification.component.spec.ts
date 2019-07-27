@@ -27,7 +27,7 @@ describe('NotificationComponent', () => {
     return { fixture, component };
   }
 
-  it('Should create the notification component', () => {
+  it('should create the notification component', () => {
     const { component } = setup();
     expect(component).toBeTruthy();
   });

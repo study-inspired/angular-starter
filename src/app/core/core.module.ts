@@ -9,6 +9,7 @@ import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router
 import { environment } from '@app/env';
 import { reducers, metaReducers } from './store';
 import { CustomRouterStateSerializer } from './router';
+import { LocalStorageService, SessionStorageService } from './web-storage';
 
 @NgModule({
   imports: [
@@ -30,8 +31,9 @@ import { CustomRouterStateSerializer } from './router';
     EffectsModule.forRoot([])
   ],
   providers: [
-    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }
-
+    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+    LocalStorageService,
+    SessionStorageService
   ]
 })
 export class CoreModule {

@@ -26,6 +26,9 @@
       ],
       "@app/core": [
         "src/app/core/index"
+      ],
+      "@app/core/*": [
+        "src/app/core/*"
       ]
     }
   },

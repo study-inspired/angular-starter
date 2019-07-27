@@ -2,8 +2,8 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Credential } from './models/credential.model';
-import { AUTH_CONFIGURATION, AuthConfiguration } from './auth.config';
+import { Credential } from '../models';
+import { AUTH_CONFIGURATION, AuthConfiguration } from '../auth.config';
 
 @Injectable()
 export class AuthService {

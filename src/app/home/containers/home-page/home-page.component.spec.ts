@@ -28,7 +28,7 @@ describe('HomePageComponent', () => {
     return { fixture, component };
   }
 
-  it('Should create the home component', () => {
+  it('should create the home component', () => {
     const { component } = setup();
     expect(component).toBeTruthy();
   });
