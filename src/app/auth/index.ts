@@ -1,4 +1,5 @@
 export * from './auth.module';
-export * from './auth.guard';
-export * from './auth.actions';
+export * from './auth.config';
+export * from './guards';
+export * from './store';
 export * from './models';

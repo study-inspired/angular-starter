@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { Credential } from '../models';
 import { AUTH_CONFIGURATION, AuthConfiguration } from '../auth.config';
-
 @Injectable()
 export class AuthService {
 

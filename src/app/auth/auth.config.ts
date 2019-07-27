@@ -11,3 +11,12 @@ export interface AuthConfiguration {
   whitelistedDomains?: Array<string | RegExp>;
   blacklistedRoutes?: Array<string | RegExp>;
 }
+
+export const defaultAuthConfig: AuthConfiguration = {
+  loginURI: 'login',
+  loginApiUrl: 'login',
+  headerName: 'Authorization',
+  skipWhenExpired: true,
+  whitelistedDomains: [],
+  blacklistedRoutes: []
+};

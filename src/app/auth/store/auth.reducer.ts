@@ -1,7 +1,8 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
-import { AuthToken, UserProfile } from './models';
+import { AuthToken, UserProfile } from '../models';
 import { loginSuccess, logout } from './auth.actions';
+
 export interface AuthState {
   authToken: AuthToken;
   loggedInUser: UserProfile;

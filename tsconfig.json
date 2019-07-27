@@ -8,7 +8,7 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "noUnusedLocals": true,
-    "noUnusedParameters":true,
+    "noUnusedParameters": true,
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
@@ -29,6 +29,12 @@
       ],
       "@app/core/*": [
         "src/app/core/*"
+      ],
+      "@app/auth": [
+        "src/app/auth/index"
+      ],
+      "@web-storage": [
+        "dist/web-storage"
       ]
     }
   },

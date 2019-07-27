@@ -9,8 +9,6 @@ import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router
 import { environment } from '@app/env';
 import { reducers, metaReducers } from './store';
 import { CustomRouterStateSerializer } from './router';
-import { LocalStorageService, SessionStorageService } from './web-storage';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -21,7 +19,7 @@ import { LocalStorageService, SessionStorageService } from './web-storage';
         strictStateImmutability: true,
         strictActionImmutability: true,
         strictStateSerializability: true,
-        strictActionSerializability: true,
+        strictActionSerializability: false,
       },
     }),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
@@ -31,9 +29,7 @@ import { LocalStorageService, SessionStorageService } from './web-storage';
     EffectsModule.forRoot([])
   ],
   providers: [
-    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
-    LocalStorageService,
-    SessionStorageService
+    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }
   ]
 })
 export class CoreModule {

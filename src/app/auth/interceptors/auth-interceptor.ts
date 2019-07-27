@@ -4,10 +4,9 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { mergeMap, take } from 'rxjs/operators';
 
-import { AuthToken } from './models';
-import { AuthState } from './auth.reducer';
-import { AUTH_CONFIGURATION, AuthConfiguration } from './auth.config';
-import { selectAuthToken } from './auth.selectors';
+import { AUTH_CONFIGURATION, AuthConfiguration } from '../auth.config';
+import { AuthToken } from '../models';
+import { AuthState, selectAuthToken } from '../store';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -41,7 +40,7 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
 
-  isWhitelistedDomain(request: HttpRequest<any>): boolean {
+  private isWhitelistedDomain(request: HttpRequest<any>): boolean {
     const parser = document.createElement('a');
     parser.href = request.url;
     const requestHost = parser.host;
@@ -59,7 +58,7 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
 
-  isBlacklistedRoute(request: HttpRequest<any>): boolean {
+  private isBlacklistedRoute(request: HttpRequest<any>): boolean {
     const url = request.url;
 
     return (

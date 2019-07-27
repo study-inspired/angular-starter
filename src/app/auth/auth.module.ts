@@ -4,13 +4,16 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { authFeatureKey, AUTH_CONFIGURATION, AuthConfiguration } from './auth.config';
-import { AuthGuard } from './auth.guard';
+import {
+  authFeatureKey,
+  defaultAuthConfig,
+  AUTH_CONFIGURATION,
+  AuthConfiguration,
+} from './auth.config';
+import { AuthGuard } from './guards';
 import { AuthService } from './services';
-import { AuthEffects } from './auth.effects';
-import { authReducer } from './auth.reducer';
-import { AuthInterceptor } from './auth-interceptor';
-
+import { AuthInterceptor } from './interceptors';
+import { AuthEffects, authReducer } from './store';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,14 +22,18 @@ import { AuthInterceptor } from './auth-interceptor';
   ]
 })
 export class AuthModule {
-  static forRoot(config: AuthConfiguration): ModuleWithProviders {
+  static forRoot(config?: AuthConfiguration): ModuleWithProviders {
+    const authConfig = {
+      ...defaultAuthConfig,
+      ...config
+    };
 
     return {
       ngModule: AuthModule,
       providers: [
         {
           provide: AUTH_CONFIGURATION,
-          useValue: config
+          useValue: authConfig
         },
         {
           provide: HTTP_INTERCEPTORS,

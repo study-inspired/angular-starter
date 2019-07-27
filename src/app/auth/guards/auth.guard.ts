@@ -4,9 +4,8 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap, distinctUntilChanged, take } from 'rxjs/operators';
 
-import { AUTH_CONFIGURATION, AuthConfiguration } from './auth.config';
-import { AuthState } from './auth.reducer';
-import { selectIsAuthenticated } from './auth.selectors';
+import { AUTH_CONFIGURATION, AuthConfiguration } from '../auth.config';
+import { AuthState, selectIsAuthenticated } from '../store';
 
 @Injectable()
 export class AuthGuard implements CanActivate {

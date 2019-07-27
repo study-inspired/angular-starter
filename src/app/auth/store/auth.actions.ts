@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { AuthToken, Credential, UserProfile } from './models';
+
+import { Credential, AuthToken, UserProfile } from '../models';
 
 export const login = createAction(
   '[Login Page] Login',
