@@ -4,7 +4,7 @@
   
   <br />
   <p align="center">
-  Angular 8 NgRx & Material Starter
+  Angular 8, NgRx and Angular Material Starter
   <br /><br />
 
   <a href="https://circleci.com/gh/truonghungit/angular-ngrx-material-starter">
