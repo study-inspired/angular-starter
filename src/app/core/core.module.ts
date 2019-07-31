@@ -6,9 +6,15 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+
 import { environment } from '@app/env';
 import { reducers, metaReducers } from './store';
 import { CustomRouterStateSerializer } from './router';
+import { I18nLoaderFactory } from './i18n';
+import { AppSettingsEffects } from './store/effects/app-settings.effect';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +32,17 @@ import { CustomRouterStateSerializer } from './router';
     environment.production ? [] : StoreDevtoolsModule.instrument({
       name: 'angular-ngrx-material-starter-app'
     }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([
+      AppSettingsEffects
+    ]),
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: I18nLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }

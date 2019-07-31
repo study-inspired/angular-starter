@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { AppState } from '@app/core/store';
+import { Language } from '@app/core/i18n';
+import { AppSettingsAction } from '@app/core/actions';
 
 @Component({
   selector: 'app-home-page',
@@ -6,4 +11,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
+
+  constructor(private store: Store<AppState>) {
+  }
+
+  onLanguageSelect(language: Language) {
+    this.store.dispatch(AppSettingsAction.changeLanguage({ language }));
+  }
 }

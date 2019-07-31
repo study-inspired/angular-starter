@@ -10,6 +10,9 @@ export function localStorageSyncReducer<T, V extends Action = Action>(reducer: A
     rehydrate: true,
     removeOnUndefined: true,
     storageKeySerializer,
-    keys: [{ auth: ['status'] }]
+    keys: [
+      { auth: ['authToken', 'loggedInUser'] },
+      'appSettings'
+    ]
   })(reducer);
 }

@@ -27,6 +27,9 @@
       "@app/core": [
         "src/app/core/index"
       ],
+      "@app/core/actions": [
+        "src/app/core/store/actions/index"
+      ],
       "@app/core/*": [
         "src/app/core/*"
       ],
