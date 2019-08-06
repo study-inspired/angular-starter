@@ -4,16 +4,37 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { mergeMap, take } from 'rxjs/operators';
 
-import { AUTH_CONFIGURATION, AuthConfiguration } from '../auth.config';
+import { AUTH_CONFIGURATION, AuthConfiguration, defaultAuthConfig } from '../auth.config';
 import { AuthToken } from '../models';
 import { AuthState, selectAuthToken } from '../store';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  private readonly whitelistedDomains: Array<string | RegExp>;
+  private readonly blacklistedRoutes: Array<string | RegExp>;
+  private readonly headerName: string;
+  private readonly skipWhenExpired: boolean;
+
   constructor(
     private store: Store<AuthState>,
-    @Inject(AUTH_CONFIGURATION) private config: AuthConfiguration
-  ) { }
+    @Inject(AUTH_CONFIGURATION) config: AuthConfiguration
+  ) {
+    this.whitelistedDomains = config.whitelistedDomains
+      ? config.whitelistedDomains
+      : defaultAuthConfig.whitelistedDomains;
+
+    this.blacklistedRoutes = config.blacklistedRoutes
+      ? config.blacklistedRoutes
+      : defaultAuthConfig.blacklistedRoutes;
+
+    this.headerName = config.headerName
+      ? config.headerName
+      : defaultAuthConfig.headerName;
+
+    this.skipWhenExpired = config.skipWhenExpired
+      ? config.skipWhenExpired
+      : defaultAuthConfig.skipWhenExpired;
+  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -27,12 +48,12 @@ export class AuthInterceptor implements HttpInterceptor {
       mergeMap((authToken: AuthToken) => {
         const tokenIsValid = AuthToken.isValid(authToken);
 
-        if (!tokenIsValid && this.config.skipWhenExpired) {
+        if (!tokenIsValid && this.skipWhenExpired) {
           return next.handle(req);
         }
 
         const request = req.clone({
-          setHeaders: { [this.config.headerName]: `${authToken.tokenType} ${authToken.accessToken}` }
+          setHeaders: { [this.headerName]: `${authToken.tokenType} ${authToken.accessToken}` }
         });
 
         return next.handle(request);
@@ -47,7 +68,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return (
       requestHost === null ||
-      this.config.whitelistedDomains.findIndex(
+      this.whitelistedDomains.findIndex(
         domain =>
           typeof domain === 'string'
             ? domain.includes(requestHost)
@@ -62,7 +83,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const url = request.url;
 
     return (
-      this.config.blacklistedRoutes.findIndex(
+      this.blacklistedRoutes.findIndex(
         route =>
           typeof route === 'string'
             ? url.includes(route)

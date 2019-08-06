@@ -4,8 +4,8 @@ import { createEffect } from '@ngrx/effects';
 import { TranslateService } from '@ngx-translate/core';
 import { distinctUntilChanged, tap } from 'rxjs/operators';
 
-import { AppState } from '../reducers';
-import { selectCurrentLanguage } from '../selectors/app-settings.selector';
+import { AppState } from '../reducer';
+import { selectCurrentLanguage } from './app-settings.selector';
 
 @Injectable()
 export class AppSettingsEffects {

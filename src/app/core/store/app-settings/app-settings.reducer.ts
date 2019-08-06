@@ -1,7 +1,7 @@
 import { createReducer, Action, on } from '@ngrx/store';
 
 import { Language } from '../../i18n';
-import { AppSettingsAction } from '../actions';
+import { AppSettingsAction } from './app-settings.action';
 
 export interface AppSettingsState {
   language: Language;

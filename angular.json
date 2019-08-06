@@ -115,41 +115,7 @@
           }
         }
       }
-    },
-    "web-storage": {
-      "projectType": "library",
-      "root": "projects/web-storage",
-      "sourceRoot": "projects/web-storage/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/web-storage/tsconfig.lib.json",
-            "project": "projects/web-storage/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/web-storage/src/test.ts",
-            "tsConfig": "projects/web-storage/tsconfig.spec.json",
-            "karmaConfig": "projects/web-storage/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/web-storage/tsconfig.lib.json",
-              "projects/web-storage/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    }},
+    }
+  },
   "defaultProject": "angular-ngrx-material-starter"
 }

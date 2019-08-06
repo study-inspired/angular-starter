@@ -13,7 +13,7 @@ export class AuthService {
   ) { }
 
   public login(credential: Credential): Observable<any> {
-    return this.http.post(this.config.loginApiUrl, credential);
+    return this.http.post(this.config.loginApiURL, credential);
   }
 
 }

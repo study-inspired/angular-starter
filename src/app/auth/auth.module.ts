@@ -6,7 +6,6 @@ import { EffectsModule } from '@ngrx/effects';
 
 import {
   authFeatureKey,
-  defaultAuthConfig,
   AUTH_CONFIGURATION,
   AuthConfiguration,
 } from './auth.config';
@@ -23,17 +22,12 @@ import { AuthEffects, authReducer } from './store';
 })
 export class AuthModule {
   static forRoot(config?: AuthConfiguration): ModuleWithProviders {
-    const authConfig = {
-      ...defaultAuthConfig,
-      ...config
-    };
-
     return {
       ngModule: AuthModule,
       providers: [
         {
           provide: AUTH_CONFIGURATION,
-          useValue: authConfig
+          useValue: config
         },
         {
           provide: HTTP_INTERCEPTORS,

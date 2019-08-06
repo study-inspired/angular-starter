@@ -4,18 +4,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:proxy": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
-    "build:prod": "./node_modules/@angular/cli/bin/ng build --prod",
+    "build:prod": "ng build --prod",
     "test": "ng test",
     "test:coverage": "ng test --code-coverage",
     "test:ci": "ng test --watch=false --no-progress --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "firebase deploy --only hosting",
-    "build:web-storage": "ng build web-storage",
-    "test:web-storage": "ng test web-storage",
-    "lint:web-storage": "ng lint web-storage",
-    "build:library": "npm run build:web-storage"
+    "deploy": "firebase deploy --only hosting"
   },
   "private": true,
   "dependencies": {

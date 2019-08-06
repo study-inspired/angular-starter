@@ -4,8 +4,8 @@ export const authFeatureKey = 'auth';
 
 export const AUTH_CONFIGURATION = new InjectionToken<AuthConfiguration>('Auth configuration');
 export interface AuthConfiguration {
-  loginURI: string;
-  loginApiUrl: string;
+  loginURL: string;
+  loginApiURL: string;
   headerName?: string;
   skipWhenExpired?: boolean;
   whitelistedDomains?: Array<string | RegExp>;
@@ -13,8 +13,8 @@ export interface AuthConfiguration {
 }
 
 export const defaultAuthConfig: AuthConfiguration = {
-  loginURI: 'login',
-  loginApiUrl: 'login',
+  loginURL: 'login',
+  loginApiURL: 'login',
   headerName: 'Authorization',
   skipWhenExpired: true,
   whitelistedDomains: [],

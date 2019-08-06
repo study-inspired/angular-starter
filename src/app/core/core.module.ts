@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -13,7 +13,7 @@ import { environment } from '@app/env';
 import { reducers, metaReducers } from './store';
 import { CustomRouterStateSerializer } from './router';
 import { I18nLoaderFactory } from './i18n';
-import { AppSettingsEffects } from './store/effects/app-settings.effect';
+import { AppSettingsEffects } from './store/app-settings';
 
 @NgModule({
   imports: [
@@ -49,6 +49,18 @@ import { AppSettingsEffects } from './store/effects/app-settings.effect';
   ]
 })
 export class CoreModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: CoreModule,
+      providers: [
+        {
+          provide: RouterStateSerializer,
+          useClass: CustomRouterStateSerializer
+        }
+      ]
+    };
+  }
+
   constructor(
     @Optional()
     @SkipSelf()

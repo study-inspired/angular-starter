@@ -4,16 +4,20 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap, distinctUntilChanged, take } from 'rxjs/operators';
 
-import { AUTH_CONFIGURATION, AuthConfiguration } from '../auth.config';
+import { AUTH_CONFIGURATION, AuthConfiguration, defaultAuthConfig } from '../auth.config';
 import { AuthState, selectIsAuthenticated } from '../store';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+  private readonly loginURI: string;
+
   constructor(
     private router: Router,
     private store: Store<AuthState>,
-    @Inject(AUTH_CONFIGURATION) private config: AuthConfiguration,
-  ) { }
+    @Inject(AUTH_CONFIGURATION) config: AuthConfiguration,
+  ) {
+    this.loginURI = config.loginURL ? config.loginURL : defaultAuthConfig.loginURL;
+  }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     return this.store.pipe(
@@ -22,7 +26,7 @@ export class AuthGuard implements CanActivate {
       take(1),
       tap(isAuthenticated => {
         if (!isAuthenticated) {
-          this.router.navigate([this.config.loginURI]);
+          this.router.navigate([this.loginURI]);
         }
       })
     );

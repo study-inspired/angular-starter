@@ -24,20 +24,20 @@
       "@app/env": [
         "src/environments/environment"
       ],
+      "@app/config": [
+        "src/app/configs/index"
+      ],
       "@app/core": [
         "src/app/core/index"
       ],
-      "@app/core/actions": [
-        "src/app/core/store/actions/index"
+      "@app/core/app-settings": [
+        "src/app/core/store/app-settings/index"
       ],
       "@app/core/*": [
         "src/app/core/*"
       ],
       "@app/auth": [
         "src/app/auth/index"
-      ],
-      "@web-storage": [
-        "dist/web-storage"
       ]
     }
   },

@@ -9,8 +9,8 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     const authConfiguration: AuthConfiguration = {
-      loginURI: 'login',
-      loginApiUrl: 'api/auth/login'
+      loginURL: 'login',
+      loginApiURL: 'api/auth/login'
     };
     TestBed.configureTestingModule({
       imports: [

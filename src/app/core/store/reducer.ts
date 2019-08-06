@@ -4,9 +4,9 @@ import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 
 import { environment as env } from '@app/env';
-import { RouterStateModel } from '../../router';
-import { logger, localStorageSyncReducer } from '../meta-reducers';
-import { AppSettingsState, appSettingsReducer } from './app-settings.reducer';
+import { RouterStateModel } from '../router';
+import { logger, localStorageSyncReducer } from './meta-reducers';
+import { AppSettingsState, appSettingsReducer } from './app-settings';
 
 export interface AppState {
   router: RouterReducerState<RouterStateModel>;
