@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 
 import { AppState } from '@app/core/store';
 import { Language } from '@app/core/i18n';
-import { AppSettingsAction } from '@app/core/app-settings';
+import { appSettingsAction } from '@app/core/app-settings';
 
 @Component({
   selector: 'app-home-page',
@@ -18,6 +18,6 @@ export class HomePageComponent {
   }
 
   onLanguageSelect(language: Language) {
-    this.store.dispatch(AppSettingsAction.changeLanguage({ language }));
+    this.store.dispatch(appSettingsAction.changeLanguage({ language }));
   }
 }

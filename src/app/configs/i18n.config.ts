@@ -1,3 +1,7 @@
 export const i18n = {
-  prefix: ''
+  prefix: '/assets/i18n',
+  modules: [
+    'general',
+    'account'
+  ]
 };

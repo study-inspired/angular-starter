@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from '@app/core';
+import { AppLayoutModule } from '@app/layout';
 import { AuthModule, AuthConfiguration } from '@app/auth';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +25,8 @@ const authConfig: AuthConfiguration = {
 
     AppRoutingModule,
     CoreModule.forRoot(),
-    AuthModule.forRoot(authConfig)
+    AuthModule.forRoot(authConfig),
+    AppLayoutModule
   ],
   declarations: [
     AppComponent

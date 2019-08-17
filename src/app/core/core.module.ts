@@ -12,8 +12,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@app/env';
 import { reducers, metaReducers } from './store';
 import { CustomRouterStateSerializer } from './router';
-import { I18nLoaderFactory } from './i18n';
 import { AppSettingsEffects } from './store/app-settings';
+import { i18nMultiModuleLoaderFactory } from './i18n';
 
 @NgModule({
   imports: [
@@ -39,7 +39,7 @@ import { AppSettingsEffects } from './store/app-settings';
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: I18nLoaderFactory,
+        useFactory: i18nMultiModuleLoaderFactory,
         deps: [HttpClient]
       }
     })

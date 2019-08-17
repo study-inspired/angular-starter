@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
+  // pending$ = this.store.pipe(select(getLoginPagePending));
+
   constructor() { }
 
   ngOnInit() {
+    // static readonly action = createAction(
+    // this.store.dispatch(actionAction.action());
+    // );
   }
 
 }

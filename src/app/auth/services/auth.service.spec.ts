@@ -40,6 +40,7 @@ describe('AuthService', () => {
     const credential = { username: 'username', password: 'password' };
 
     service.login(credential).subscribe();
+
     const call = backend.expectOne(`api/auth/login`);
     expect(call.request.method).toEqual(HttpMethod.Post);
     call.flush({});

@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { distinctUntilChanged, tap } from 'rxjs/operators';
 
 import { AppState } from '../reducer';
-import { selectCurrentLanguage } from './app-settings.selector';
+import { appSettingsSelector } from './app-settings.selector';
 
 @Injectable()
 export class AppSettingsEffects {
@@ -13,7 +13,7 @@ export class AppSettingsEffects {
   setLanguage$ = createEffect(
     () =>
       this.store.pipe(
-        select(selectCurrentLanguage),
+        select(appSettingsSelector.selectCurrentLanguage),
         distinctUntilChanged(),
         tap(language => this.translateService.use(language))
       ),

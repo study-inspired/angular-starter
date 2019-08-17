@@ -1,14 +1,14 @@
 import { createReducer, Action, on } from '@ngrx/store';
 
 import { Language } from '../../i18n';
-import { AppSettingsAction } from './app-settings.action';
+import { appSettingsAction } from './app-settings.action';
 
 export interface AppSettingsState {
   language: Language;
   theme: string;
 }
 
-export const initialState: AppSettingsState = {
+const initialState: AppSettingsState = {
   language: 'en',
   theme: 'DEFAULT-THEME'
 };
@@ -16,7 +16,7 @@ export const initialState: AppSettingsState = {
 const reducer = createReducer(
   initialState,
   on(
-    AppSettingsAction.changeLanguage,
+    appSettingsAction.changeLanguage,
     (state, { language }) => ({ ...state, language })
   ),
 );

@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Admin</span>
+    <span class="spacer"></span>
+    <div>
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-nav-list>
+  <mat-list-item>
+    <a matLine routerLink="/admin">Overview</a>
+  </mat-list-item>
+
+  <mat-list-item>
+    <a matLine routerLink="/admin/users">Users</a>
+  </mat-list-item>
+
+  <mat-list-item>
+    <a matLine routerLink="/admin/products">Products</a>
+  </mat-list-item>
+</mat-nav-list>
