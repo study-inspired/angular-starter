@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { tap, distinctUntilChanged, take } from 'rxjs/operators';
 
 import { AUTH_CONFIGURATION, AuthConfiguration, defaultAuthConfig } from '../auth.config';
-import { AuthState, selectIsAuthenticated } from '../store';
+import { AuthState } from '../reducers';
+import { selectIsAuthenticated } from '../selectors';
 
 @Injectable()
 export class AuthGuard implements CanActivate {

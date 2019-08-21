@@ -6,7 +6,8 @@ import { mergeMap, take } from 'rxjs/operators';
 
 import { AUTH_CONFIGURATION, AuthConfiguration, defaultAuthConfig } from '../auth.config';
 import { AuthToken } from '../models';
-import { AuthState, selectAuthToken } from '../store';
+import { AuthState } from '../reducers';
+import { selectAuthToken } from '../selectors';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

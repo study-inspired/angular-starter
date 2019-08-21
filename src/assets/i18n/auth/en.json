@@ -1,0 +1,26 @@
+{
+  "auth": {
+    "label": {
+      "username": "Email",
+      "email": "Email",
+      "password": "Password"
+    },
+    "button": {
+      "login": "Login",
+      "sendResetLink": "Send reset link",
+      "unlock": "Unlock"
+    },
+    "error": {
+      "username": {
+        "required": "Email is required"
+      },
+      "email": {
+        "required": "Email is required",
+        "invalid": "Please enter a valid email"
+      },
+      "password": {
+        "required": "Password is required"
+      }
+    }
+  }
+}

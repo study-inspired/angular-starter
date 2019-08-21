@@ -19,5 +19,7 @@ export class HomePageComponent {
 
   onLanguageSelect(language: Language) {
     this.store.dispatch(appSettingsAction.changeLanguage({ language }));
+
   }
 }
+

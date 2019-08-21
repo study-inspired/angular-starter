@@ -16,6 +16,7 @@ export class MultiModuleTranslateLoader implements TranslateLoader {
 
   public getTranslation(lang: string): Observable<any> {
     const { prefix, modules } = this.options;
+    console.log('modules   modules', modules);
 
     const requests = modules.map((moduleName) => {
       const path = [prefix, moduleName, lang].join('/') + '.json';
@@ -24,14 +25,7 @@ export class MultiModuleTranslateLoader implements TranslateLoader {
     });
 
     return forkJoin(requests).pipe(
-      map(response => {
-        console.log('xxxxxxxxx', response);
-        const result =  _.reduce(response, _.extend);
-
-        console.log('result  ', result);
-
-        return result;
-      })
+      map(response => _.reduce(response, _.extend))
     );
   }
 }

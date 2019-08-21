@@ -3,15 +3,15 @@ import { Subject } from 'rxjs';
 
 export class DetroyableComponent implements OnDestroy {
 
-  protected componentDetroyed$: Subject<any>;
+  protected componentDestroyed$: Subject<any>;
 
   constructor() {
-    this.componentDetroyed$ = new Subject();
+    this.componentDestroyed$ = new Subject();
   }
 
   ngOnDestroy(): void {
-    this.componentDetroyed$.next();
-    this.componentDetroyed$.complete();
+    this.componentDestroyed$.next();
+    this.componentDestroyed$.complete();
   }
 
 }

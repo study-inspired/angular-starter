@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { environment as env } from '@app/env';
+import { HttpException } from '../http-exception';
 
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
@@ -15,12 +16,27 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   }
 
   // Customize the default error handler here if needed
-  private errorHandler(response: HttpEvent<any>): Observable<HttpEvent<any>> {
+  private errorHandler(error: HttpErrorResponse): Observable<HttpEvent<HttpException>> {
     if (!env.production) {
       // Do something with the error
     }
 
-    return throwError(response);
+    if (!error || error.status === 0) {
+
+      return throwError({
+        message: 'Đã xảy ra lỗi. Chúng tôi đang cố gắng khắc phục điều này sớm nhất có thể. Bạn có thể thử lại.',
+        status: 0,
+        type: 'unknown',
+        statusText: error.statusText
+      });
+    }
+
+    return throwError({
+      ok: error.ok,
+      message: error.message,
+      status: error.status,
+      statusText: error.statusText
+    });
   }
 
 }

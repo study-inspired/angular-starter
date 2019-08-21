@@ -12,6 +12,10 @@ export class AuthService {
     @Inject(AUTH_CONFIGURATION) private config: AuthConfiguration
   ) { }
 
+  public fakeLogin(credential: Credential): Observable<any> {
+    return this.http.post(this.config.loginApiURL, credential);
+  }
+
   public login(credential: Credential): Observable<any> {
     return this.http.post(this.config.loginApiURL, credential);
   }

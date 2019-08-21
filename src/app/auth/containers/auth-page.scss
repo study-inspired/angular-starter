@@ -1,0 +1,21 @@
+.auth-page {
+  width: 100%;
+  height: 100vh;
+  background: url('/assets/images/background_1.png');
+}
+
+.title {
+  margin-bottom: 32px;
+}
+
+.auth-card {
+  width: 480px;
+  padding: 32px;
+}
+
+mat-progress-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}

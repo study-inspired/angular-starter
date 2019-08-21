@@ -12,5 +12,5 @@ export function i18nMultiModuleLoaderFactory(http: HttpClient) {
 }
 
 export function i18nLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, `${appConfig.i18n.prefix}/assets/i18n/`, '.json');
+  return new TranslateHttpLoader(http, `${appConfig.i18n.prefix}/assets/i18n/general/`, '.json');
 }

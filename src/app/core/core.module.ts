@@ -1,19 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpClient } from '@angular/common/http';
-
 import { environment } from '@app/env';
 import { reducers, metaReducers } from './store';
 import { CustomRouterStateSerializer } from './router';
 import { AppSettingsEffects } from './store/app-settings';
-import { i18nMultiModuleLoaderFactory } from './i18n';
+import {
+  ApiPrefixInterceptor,
+  ErrorHandlerInterceptor,
+  RetryHttpRequestInterceptor
+} from './http';
 
 @NgModule({
   imports: [
@@ -34,15 +36,7 @@ import { i18nMultiModuleLoaderFactory } from './i18n';
     }),
     EffectsModule.forRoot([
       AppSettingsEffects
-    ]),
-
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: i18nMultiModuleLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    ])
   ],
   providers: [
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }
@@ -53,10 +47,10 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        {
-          provide: RouterStateSerializer,
-          useClass: CustomRouterStateSerializer
-        }
+        { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+        { provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: RetryHttpRequestInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true },
       ]
     };
   }
