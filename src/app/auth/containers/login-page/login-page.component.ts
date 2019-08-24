@@ -1,29 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Component, OnDestroy } from '@angular/core';
+
+import { dispatchAction, select } from '@app/core/store/utils';
 
 import { Credential } from '../../models';
-import { AuthState } from '../../reducers';
 import { LoginPageActions } from '../../actions';
-import { selectLoginPagePending } from '../../selectors';
+import { selectLoginPageError, selectLoginPagePending } from '../../selectors';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss', '../auth-page.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnDestroy {
 
-  pending$ = this.store.pipe(select(selectLoginPagePending));
+  pending$ = select(selectLoginPagePending);
+  error$ = select(selectLoginPageError);
 
-  constructor(
-    private store: Store<AuthState>
-  ) { }
-
-  ngOnInit() {
+  onLogin(credential: Credential) {
+    dispatchAction(LoginPageActions.login({ credential }));
   }
 
-  onLogin(credential: Credential): void {
-    this.store.dispatch(LoginPageActions.login({ credential }));
+  ngOnDestroy() {
+    dispatchAction(LoginPageActions.leavePage());
   }
-
 }

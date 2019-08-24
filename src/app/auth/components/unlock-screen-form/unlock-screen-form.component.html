@@ -13,7 +13,7 @@
       readonly
       placeholder="{{ 'auth.label.username' | translate }}"
       formControlName="username" />
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-icon matSuffix>account_circle</mat-icon>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
@@ -23,7 +23,7 @@
       type="password"
       placeholder="{{ 'auth.label.password' | translate }}"
       formControlName="password" />
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-icon matSuffix>lock</mat-icon>
     <mat-error>
       <span *ngIf="formErrors.password.required">
           {{ 'auth.error.password.required' | translate }}
@@ -37,7 +37,7 @@
       tabindex="3"
       color="accent"
       type="submit"
-      class="action-button"
+      class="action-button w-100"
       [disabled]="form.invalid || pending">
       {{ 'auth.button.unlock' | translate }}
     </button>

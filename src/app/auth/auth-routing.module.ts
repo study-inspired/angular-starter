@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   LoginPageComponent,
   ForgotPasswordPageComponent,
-  LockScreenPageComponent
+  LockScreenPageComponent,
+  ResetPasswordPageComponent
 } from './containers';
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordPageComponent
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordPageComponent
   }
 ];
 

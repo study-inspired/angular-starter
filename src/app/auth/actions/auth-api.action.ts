@@ -1,6 +1,6 @@
 import { props, createAction } from '@ngrx/store';
 
-import { HttpException } from '@app/core/http';
+import { HttpError } from '@app/core/exception';
 import { AuthToken } from '../models';
 
 export const loginSuccess = createAction(
@@ -10,5 +10,5 @@ export const loginSuccess = createAction(
 
 export const loginFailure = createAction(
   '[Auth/API] Login Failure',
-  props<{ error: {action: any; error: HttpException} }>()
+  props<{ error: HttpError }>()
 );

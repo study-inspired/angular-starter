@@ -1,8 +1,4 @@
 {
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#3f51b5",
-    "activityBarBadge.background": "#ff4081",
-    "activityBarBadge.foreground": "#ffffff",
-    "activityBar.foreground": "#ffffff"
-  },
+  "workbench.iconTheme": "vs-minimal",
+  "workbench.tree.indent": 12
 }

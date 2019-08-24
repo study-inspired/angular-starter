@@ -12,7 +12,7 @@
       type="text"
       placeholder="{{ 'auth.label.username' | translate }}"
       formControlName="username" />
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-icon matSuffix>account_circle</mat-icon>
     <mat-error>
       <span *ngIf="formErrors.username.required">
         {{ 'auth.error.username.required' | translate }}
@@ -28,7 +28,7 @@
       type="password"
       placeholder="{{ 'auth.label.password' | translate }}"
       formControlName="password" />
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-icon matSuffix>lock</mat-icon>
     <mat-error>
       <span *ngIf="formErrors.password.required">
           {{ 'auth.error.password.required' | translate }}
@@ -36,16 +36,23 @@
     </mat-error>
   </mat-form-field>
 
+  <a [routerLink]="['/forgot-password']">Forgot Password?</a>
+
   <div>
     <span fxFlex></span>
     <button mat-raised-button
       tabindex="3"
       color="accent"
       type="submit"
-      class="action-button"
+      class="action-button w-100"
       [disabled]="form.invalid || pending">
       {{ 'auth.button.login' | translate }}
     </button>
   </div>
 
 </form>
+
+<div class="text-center mt-32">
+  <span>Don't have an account? </span>
+  <a [routerLink]="[ '/register' ]">Create an account</a>
+</div>

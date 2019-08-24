@@ -1,11 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 
+import { HttpError } from '@app/core/exception';
 import { ResetPasswordActions } from '../actions';
 
 export const resetPasswordPageFeatureKey = 'resetPasswordPage';
 
 export interface State {
-  error: any;
+  error: HttpError | null;
   pending: boolean;
 }
 

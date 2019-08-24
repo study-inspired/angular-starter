@@ -1,14 +1,22 @@
 {
   "auth": {
+    "pageTitle": {
+      "login": "Login",
+      "forgotPassword": "Recover your password",
+      "resetPassword": "Reset password",
+      "lock": "Your session is locked"
+    },
     "label": {
       "username": "Email",
       "email": "Email",
-      "password": "Password"
+      "password": "Password",
+      "confirmPassword": "Confirm Password:"
     },
     "button": {
       "login": "Login",
       "sendResetLink": "Send reset link",
-      "unlock": "Unlock"
+      "unlock": "Unlock",
+      "resetPassword": "Reset password"
     },
     "error": {
       "username": {
@@ -20,6 +28,10 @@
       },
       "password": {
         "required": "Password is required"
+      },
+      "confirmPassword": {
+        "required": "Password confirmation is required!",
+        "mustMatch": "Confirm password does not match the password "
       }
     }
   }

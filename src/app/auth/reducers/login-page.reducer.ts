@@ -1,11 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 
+import { HttpError } from '@app/core/exception';
 import { LoginPageActions, AuthApiActions } from '../actions';
 
 export const loginPageFeatureKey = 'loginPage';
 
 export interface State {
-  error: any;
+  error: HttpError | null;
   pending: boolean;
 }
 
@@ -21,6 +22,11 @@ export const reducer = createReducer(
     ...state,
     error: null,
     pending: true,
+  })),
+
+  on(LoginPageActions.leavePage, state => ({
+    ...state,
+    error: null
   })),
 
   on(AuthApiActions.loginSuccess, state => ({

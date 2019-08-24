@@ -4,13 +4,15 @@
   background: url('/assets/images/background_1.png');
 }
 
-.title {
-  margin-bottom: 32px;
+.form {
+  display: block;
+  margin-top: 40px;
 }
 
 .auth-card {
-  width: 480px;
+  width: 420px;
   padding: 32px;
+  padding-bottom: 48px;
 }
 
 mat-progress-bar {

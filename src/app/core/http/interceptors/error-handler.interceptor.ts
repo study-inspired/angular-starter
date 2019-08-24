@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { environment as env } from '@app/env';
-import { HttpException } from '../http-exception';
+import { HttpError } from '../../exception';
 
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
@@ -16,7 +16,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   }
 
   // Customize the default error handler here if needed
-  private errorHandler(error: HttpErrorResponse): Observable<HttpEvent<HttpException>> {
+  private errorHandler(error: HttpErrorResponse): Observable<HttpEvent<HttpError>> {
     if (!env.production) {
       // Do something with the error
     }

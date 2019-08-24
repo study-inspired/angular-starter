@@ -41,7 +41,10 @@
       ],
       "@app/layout": [
         "src/app/layout/index"
-      ]
+      ],
+      "@app/shared/*": [
+        "src/app/shared/*"
+      ],
     }
   },
   "angularCompilerOptions": {

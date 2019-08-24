@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, Router, CanActivateChild } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap, distinctUntilChanged, take } from 'rxjs/operators';
@@ -9,8 +9,10 @@ import { AuthState } from '../reducers';
 import { selectIsAuthenticated } from '../selectors';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild {
+
   private readonly loginURI: string;
+  private isAuthenticated$: Observable<boolean>;
 
   constructor(
     private router: Router,
@@ -18,10 +20,8 @@ export class AuthGuard implements CanActivate {
     @Inject(AUTH_CONFIGURATION) config: AuthConfiguration,
   ) {
     this.loginURI = config.loginURL ? config.loginURL : defaultAuthConfig.loginURL;
-  }
 
-  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    return this.store.pipe(
+    this.isAuthenticated$ = this.store.pipe(
       select(selectIsAuthenticated),
       distinctUntilChanged(),
       take(1),
@@ -32,4 +32,13 @@ export class AuthGuard implements CanActivate {
       })
     );
   }
+
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
+    return this.isAuthenticated$;
+  }
+
+  canActivateChild(): boolean | Observable<boolean> | Promise<boolean> {
+    return this.isAuthenticated$;
+  }
+
 }

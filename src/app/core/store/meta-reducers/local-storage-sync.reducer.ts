@@ -11,7 +11,7 @@ export function localStorageSyncReducer<T, V extends Action = Action>(reducer: A
     removeOnUndefined: true,
     storageKeySerializer,
     keys: [
-      { auth: ['authToken', 'loggedInUser'] },
+      { auth: ['status'] },
       'appSettings'
     ]
   })(reducer);

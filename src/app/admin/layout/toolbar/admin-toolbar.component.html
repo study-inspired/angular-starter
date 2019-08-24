@@ -7,7 +7,7 @@
     <span class="spacer"></span>
 
     <div>
-      <button mat-button>Logout</button>
+      <button mat-button (click)="onLogoutClicked()">{{ 'general.logout' | translate }}</button>
       <button mat-button [matMenuTriggerFor]="languageMenu">EN</button>
 
       <mat-menu #languageMenu="matMenu">

@@ -1,4 +1,4 @@
-export interface HttpException {
+export interface HttpError {
   ok?: boolean;
   type?: string;
   message: string;

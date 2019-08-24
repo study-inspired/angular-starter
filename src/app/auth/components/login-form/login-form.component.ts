@@ -1,26 +1,23 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { takeUntil } from 'rxjs/operators';
 
+import { takeUntilDestroy } from '@app/core/destroyable';
 import { Credential } from '@app/auth';
-import { DetroyableComponent } from '@app/core/destroyable';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss', '../auth-from.scss']
 })
-export class LoginFormComponent extends DetroyableComponent implements OnInit, OnDestroy {
+export class LoginFormComponent implements OnInit {
   @Input() pending: boolean;
 
   @Output() login: EventEmitter<Credential>;
 
   form: FormGroup;
   formErrors: any;
-  hidePassword = true;
 
   constructor(private formBuilder: FormBuilder) {
-    super();
 
     this.login = new EventEmitter();
 
@@ -36,7 +33,7 @@ export class LoginFormComponent extends DetroyableComponent implements OnInit, O
 
   ngOnInit() {
     this.form.valueChanges.pipe(
-      takeUntil(this.componentDestroyed$)
+      takeUntilDestroy(this)
     ).subscribe(() => {
       this.onLoginFormValuesChanged();
     });

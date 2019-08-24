@@ -11,12 +11,6 @@ export interface AuthState {
   resetPasswordPage: fromResetPasswordPage.State;
 }
 
-// export const authReducer: ActionReducerMap<AuthState, Action> = {
-//   status: fromAuth.reducer,
-//   loginPage: fromLoginPage.reducer,
-//   resetPasswordPage: fromResetPasswordPage.reducer
-// };
-
 export function authReducer(state: AuthState | undefined, action: Action) {
   return combineReducers({
     [fromAuth.statusFeatureKey]: fromAuth.reducer,

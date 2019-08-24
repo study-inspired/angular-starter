@@ -30,7 +30,7 @@ export class AuthEffects {
   loginSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthApiActions.loginSuccess),
-      tap(() => this.router.navigate(['/']))
+      tap(() => this.router.navigate(['/admin']))
     ),
     { dispatch: false }
   );

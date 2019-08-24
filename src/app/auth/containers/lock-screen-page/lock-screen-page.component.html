@@ -5,9 +5,11 @@
 
     <mat-card-content *ngIf="loggedInUser$ | async as user">
 
-      <h1 class="mat-h1 title">Your session is locked</h1>
+      <h1 class="mat-h1">{{ 'auth.pageTitle.lock' | translate }}</h1>
 
-      <app-unlock-screen-form [pending]="pending$ | async"
+      <app-unlock-screen-form
+        class="form"
+        [pending]="pending$ | async"
         [user]="user"
         (login)="onLogin($event)">
       </app-unlock-screen-form>

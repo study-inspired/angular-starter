@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiBaseUrl: '/api',
+  apiBaseUrl: 'http://localhost:3000/',
   http: {
     maxRetryAttempts: 0
   }

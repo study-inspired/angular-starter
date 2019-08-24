@@ -8,12 +8,12 @@ export const selectResetPasswordPageState = createSelector(
   (state: AuthState) => state.resetPasswordPage
 );
 
-export const selectLoginPageError = createSelector(
+export const selectResetPasswordPageError = createSelector(
   selectResetPasswordPageState,
   fromResetPasswordPage.getError
 );
 
-export const selectLoginPagePending = createSelector(
+export const selectResetPasswordPagePending = createSelector(
   selectResetPasswordPageState,
   fromResetPasswordPage.getPending
 );
