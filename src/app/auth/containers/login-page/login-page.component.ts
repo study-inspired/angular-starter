@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
+import { Store, select } from '@ngrx/store';
 
-import { dispatchAction, select } from '@app/core/store/utils';
-
+import { AuthState } from '../../reducers';
 import { Credential } from '../../models';
 import { LoginPageActions } from '../../actions';
 import { selectLoginPageError, selectLoginPagePending } from '../../selectors';
@@ -13,14 +13,18 @@ import { selectLoginPageError, selectLoginPagePending } from '../../selectors';
 })
 export class LoginPageComponent implements OnDestroy {
 
-  pending$ = select(selectLoginPagePending);
-  error$ = select(selectLoginPageError);
+  pending$ = this.store.pipe(select(selectLoginPagePending));
+  error$ = this.store.pipe(select(selectLoginPageError));
+
+  constructor(
+    private store: Store<AuthState>
+  ) { }
 
   onLogin(credential: Credential) {
-    dispatchAction(LoginPageActions.login({ credential }));
+    this.store.dispatch(LoginPageActions.login({ credential }));
   }
 
   ngOnDestroy() {
-    dispatchAction(LoginPageActions.leavePage());
+    this.store.dispatch(LoginPageActions.leavePage());
   }
 }

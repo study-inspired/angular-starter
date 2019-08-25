@@ -9,7 +9,6 @@ import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router
 
 import { environment } from '@app/env';
 import { reducers, metaReducers } from './store';
-import { NgrxUtilConnectingModule } from './store/utils';
 import { CustomRouterStateSerializer } from './router';
 import { AppSettingsEffects } from './store/app-settings';
 import {
@@ -37,8 +36,7 @@ import {
     }),
     EffectsModule.forRoot([
       AppSettingsEffects
-    ]),
-    NgrxUtilConnectingModule
+    ])
   ]
 })
 export class CoreModule {
