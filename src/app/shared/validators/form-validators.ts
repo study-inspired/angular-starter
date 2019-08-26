@@ -3,15 +3,18 @@ import { ValidationErrors, FormGroup } from '@angular/forms';
 export class FormValidators {
 
   /**
-   *  this.form = this.formBuilder.group(
-   *    {
-   *      password: [null, Validators.required],
-   *      confirmPassword: [null, [Validators.required]]
-   *    },
-   *    {
-   *      validators: [FormValidators.mustMatch('password', 'confirmPassword')]
-   *    }
-   *  );
+   * Form validators
+   *
+   * @example
+   * this.form = this.formBuilder.group(
+   *   {
+   *     password: [null, Validators.required],
+   *     confirmPassword: [null, [Validators.required]]
+   *   },
+   *   {
+   *     validators: [FormValidators.mustMatch('password', 'confirmPassword')]
+   *   }
+   * );
    *
    * @param(string) controlName
    * @param(string) matchingControlName

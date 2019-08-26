@@ -1,48 +1,43 @@
 import { MonoTypeOperatorFunction, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-// create a symbol identify the observable I add to
-// the component so it doesn't conflict with anything.
-// I need this so I'm able to add the desired behaviour to the component.
-export const destroy$ = Symbol('destroy$');
+const destroy$ = Symbol('componentDestroy$');
 
 /**
- * takeUntilDestroy(this)
- * An operator that takes until destroy it takes a components this a parameter
- * returns a pipeable RxJS operator.
+ * @example
+ *
+ *  this.pending$.pipe(
+ *     takeUntilDestroy(this)
+ *  ).subscribe((pending) => {
+ *     console.log('pending: ', pending)
+ *  });
+ *
+ * @param() component
  */
 export const takeUntilDestroy = <T>(component: any): MonoTypeOperatorFunction<T> => {
   if (component[destroy$] === undefined) {
-    // only hookup each component once.
     addDestroyObservableToComponent(component);
   }
 
-  // pipe in the takeUntil destroy$ and return the source unaltered
   return takeUntil<T>(component[destroy$]);
 };
 
 /**
  * @internal
  */
-export function addDestroyObservableToComponent(component: any) {
-  component[destroy$] = new Observable<void>(observer => {
-    // keep track of the original destroy function,
-    // the user might do something in there
+function addDestroyObservableToComponent(component: any) {
+  component[destroy$] = new Observable<void>((subscriber) => {
     const orignalDestroy = component.ngOnDestroy;
 
-    // replace the ngOndestroy
     component.ngOnDestroy = () => {
-      // fire off the destroy observable
-      observer.next();
-      // complete the observable
-      observer.complete();
-      // and at last, call the original destroy
+      subscriber.next();
+      subscriber.complete();
+
       if (orignalDestroy) {
         orignalDestroy.call(component);
       }
     };
 
-    // return cleanup function.
     return (_: any) => (component[destroy$] = undefined);
   });
 }

@@ -7,7 +7,7 @@ import { mergeMap, take } from 'rxjs/operators';
 import { AUTH_CONFIGURATION, AuthConfiguration, defaultAuthConfig } from '../auth.config';
 import { AuthToken } from '../models';
 import { AuthState } from '../reducers';
-import { selectAuthToken } from '../selectors';
+import { AuthSelectors } from '../selectors';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -44,7 +44,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     return this.store.pipe(
-      select(selectAuthToken),
+      select(AuthSelectors.selectAuthToken),
       take(1),
       mergeMap((authToken: AuthToken) => {
         const tokenIsValid = AuthToken.isValid(authToken);

@@ -6,7 +6,7 @@ import { tap, distinctUntilChanged, take } from 'rxjs/operators';
 
 import { AUTH_CONFIGURATION, AuthConfiguration, defaultAuthConfig } from '../auth.config';
 import { AuthState } from '../reducers';
-import { selectIsAuthenticated } from '../selectors';
+import { AuthSelectors } from '../selectors';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     this.loginURI = config.loginURL ? config.loginURL : defaultAuthConfig.loginURL;
 
     this.isAuthenticated$ = this.store.pipe(
-      select(selectIsAuthenticated),
+      select(AuthSelectors.selectIsAuthenticated),
       distinctUntilChanged(),
       take(1),
       tap(isAuthenticated => {

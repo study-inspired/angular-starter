@@ -4,7 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { AuthState } from '../../reducers';
 import { Credential } from '../../models';
 import { LoginPageActions } from '../../actions';
-import { selectLoginPageError, selectLoginPagePending } from '../../selectors';
+import { LoginPageSelectors } from '../../selectors';
 
 @Component({
   selector: 'app-login-page',
@@ -13,8 +13,8 @@ import { selectLoginPageError, selectLoginPagePending } from '../../selectors';
 })
 export class LoginPageComponent implements OnDestroy {
 
-  pending$ = this.store.pipe(select(selectLoginPagePending));
-  error$ = this.store.pipe(select(selectLoginPageError));
+  pending$ = this.store.pipe(select(LoginPageSelectors.selectLoginPagePending));
+  error$ = this.store.pipe(select(LoginPageSelectors.selectLoginPageError));
 
   constructor(
     private store: Store<AuthState>

@@ -1,25 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
 import { AuthState } from '../../reducers';
 import { ResetPasswordActions } from '../../actions';
-import { selectResetPasswordPagePending } from '../../selectors';
+import { ResetPasswordSelectors } from '../../selectors';
 
 @Component({
   selector: 'app-reset-password-page',
   templateUrl: './reset-password-page.component.html',
   styleUrls: ['./reset-password-page.component.scss', '../auth-page.scss']
 })
-export class ResetPasswordPageComponent implements OnInit {
+export class ResetPasswordPageComponent {
 
-  pending$ = this.store.pipe(select(selectResetPasswordPagePending));
+  pending$ = this.store.pipe(select(ResetPasswordSelectors.selectResetPasswordPagePending));
 
   constructor(
     private store: Store<AuthState>
   ) { }
-
-  ngOnInit() {
-  }
 
   onResetPassword(password: string): void {
     this.store.dispatch(ResetPasswordActions.resetPassword({ password }));

@@ -16,7 +16,6 @@ export class MultiModuleTranslateLoader implements TranslateLoader {
 
   public getTranslation(lang: string): Observable<any> {
     const { prefix, modules } = this.options;
-    console.log('modules   modules', modules);
 
     const requests = modules.map((moduleName) => {
       const path = [prefix, moduleName, lang].join('/') + '.json';

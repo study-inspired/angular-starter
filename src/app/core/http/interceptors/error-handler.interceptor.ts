@@ -24,7 +24,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
     if (!error || error.status === 0) {
 
       return throwError({
-        message: 'Đã xảy ra lỗi. Chúng tôi đang cố gắng khắc phục điều này sớm nhất có thể. Bạn có thể thử lại.',
+        message: 'An error occurred. Please try again later. We are trying to fix this as soon as possible.',
         status: 0,
         type: 'unknown',
         statusText: error.statusText
