@@ -45,6 +45,12 @@
       "@app/shared/*": [
         "src/app/shared/*"
       ],
+      "@app/sentry": [
+        "src/app/sentry/index"
+      ],
+      "@app/sentry/*": [
+        "src/app/sentry/*"
+      ]
     }
   },
   "angularCompilerOptions": {
