@@ -8,8 +8,6 @@ import { CoreModule } from '@app/core';
 import { i18nMultiModuleLoaderFactory } from '@app/core/i18n';
 import { AppLayoutModule } from '@app/layout';
 import { AuthModule, AuthConfiguration } from '@app/auth';
-// uncomment to use Sentry
-// import { SentryModule } from '@app/sentry';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -38,9 +36,7 @@ const authConfig: AuthConfiguration = {
     AppRoutingModule,
     CoreModule.forRoot(),
     AuthModule.forRoot(authConfig),
-    AppLayoutModule,
-    // uncomment to use Sentry
-    // SentryModule.forRoot()
+    AppLayoutModule
   ],
   declarations: [
     AppComponent
