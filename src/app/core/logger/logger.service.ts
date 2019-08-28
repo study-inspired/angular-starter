@@ -1,19 +1,7 @@
-export interface ILoggerService {
+export abstract class LoggerService {
 
-  captureException(error: Error, context: any);
+  abstract captureException(error: Error, context: any);
 
-  captureInfo(message: string, tags: any);
-
-}
-
-export class LoggerService implements ILoggerService {
-
-  captureException(error: Error, context: any) {
-    console.log(error, context);
-  }
-
-  captureInfo(message: string, tags: any) {
-     console.log(message, tags);
-  }
+  abstract captureInfo(message: string, tags: any);
 
 }
