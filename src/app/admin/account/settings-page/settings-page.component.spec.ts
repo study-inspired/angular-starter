@@ -3,23 +3,25 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SettingsPageComponent } from './settings-page.component';
 
 describe('SettingsPageComponent', () => {
-  let component: SettingsPageComponent;
-  let fixture: ComponentFixture<SettingsPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsPageComponent ]
+      declarations: [SettingsPageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SettingsPageComponent);
-    component = fixture.componentInstance;
+  function setup() {
+    const fixture: ComponentFixture<SettingsPageComponent> = TestBed.createComponent(SettingsPageComponent);
+    const component: SettingsPageComponent = fixture.componentInstance;
     fixture.detectChanges();
-  });
+
+    return { fixture, component };
+  }
 
   it('should create', () => {
+    const { component } = setup();
+
     expect(component).toBeTruthy();
   });
 });

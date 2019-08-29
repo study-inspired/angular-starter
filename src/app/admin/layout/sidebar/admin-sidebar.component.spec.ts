@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminSidebarComponent } from './admin-sidebar.component';
 
-describe('AdminSidebarComponent', () => {
+xdescribe('AdminSidebarComponent', () => {
   let component: AdminSidebarComponent;
   let fixture: ComponentFixture<AdminSidebarComponent>;
 

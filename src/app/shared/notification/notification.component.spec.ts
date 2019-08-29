@@ -29,6 +29,7 @@ describe('NotificationComponent', () => {
 
   it('should create the notification component', () => {
     const { component } = setup();
+
     expect(component).toBeTruthy();
   });
 });
