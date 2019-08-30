@@ -3,8 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductsPageComponent } from './products-page.component';
 
 describe('ProductsPageComponent', () => {
-  let component: ProductsPageComponent;
-  let fixture: ComponentFixture<ProductsPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -13,13 +11,18 @@ describe('ProductsPageComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ProductsPageComponent);
-    component = fixture.componentInstance;
+  function setup() {
+    const fixture: ComponentFixture<ProductsPageComponent> = TestBed.createComponent(ProductsPageComponent);
+    const component: ProductsPageComponent = fixture.componentInstance;
     fixture.detectChanges();
-  });
+
+    return { fixture, component };
+  }
 
   it('should create', () => {
+    const { component } = setup();
+
     expect(component).toBeTruthy();
   });
+
 });

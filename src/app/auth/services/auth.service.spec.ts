@@ -35,7 +35,7 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be able login with credential', () => {
+  it('should call the login API with credential and return the result', () => {
     const { service, backend } = setup();
     const credential = { username: 'username', password: 'password' };
 

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LockScreenPageComponent } from './lock-screen-page.component';
 
-describe('LockScreenPageComponent', () => {
+xdescribe('LockScreenPageComponent', () => {
   let component: LockScreenPageComponent;
   let fixture: ComponentFixture<LockScreenPageComponent>;
 

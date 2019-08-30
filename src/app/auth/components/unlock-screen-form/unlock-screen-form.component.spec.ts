@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UnlockScreenFormComponent } from './unlock-screen-form.component';
 
-describe('UnlockScreenFormComponent', () => {
+xdescribe('UnlockScreenFormComponent', () => {
   let component: UnlockScreenFormComponent;
   let fixture: ComponentFixture<UnlockScreenFormComponent>;
 

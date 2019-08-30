@@ -1,4 +1,4 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, Provider } from '@angular/core';
 
 export const authFeatureKey = 'auth';
 
@@ -20,3 +20,11 @@ export const defaultAuthConfig: AuthConfiguration = {
   whitelistedDomains: [],
   blacklistedRoutes: []
 };
+
+export function provideMockAuthConfig(config?: AuthConfiguration): Array<Provider> {
+  if (config === void 0) { config = defaultAuthConfig; }
+
+  return [
+    { provide: AUTH_CONFIGURATION, useValue: config }
+  ];
+}

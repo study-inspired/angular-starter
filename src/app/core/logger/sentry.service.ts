@@ -4,17 +4,27 @@ import { LoggerService } from './logger.service';
 import { defaultSentryConfig } from './sentry.config';
 import { defaultLoggerConfig } from './logger.config';
 
-Sentry.init({
-  dsn: defaultSentryConfig.dsn,
-  environment: defaultSentryConfig.environment,
-  enabled: defaultLoggerConfig.enable,
-  release: defaultSentryConfig.release
-});
-
+/**
+ * A logger service implement use Sentry.io
+ *
+ * @link https://sentry.io
+ * @link https://docs.sentry.io/
+ * @author Luan Tran
+ */
 export class SentryService extends LoggerService {
 
   constructor() {
     super();
+    this.initSentry();
+  }
+
+  initSentry() {
+    Sentry.init({
+      dsn: defaultSentryConfig.dsn,
+      environment: defaultSentryConfig.environment,
+      enabled: defaultLoggerConfig.enable,
+      release: defaultSentryConfig.release
+    });
   }
 
   captureException(error: Error, context: any) {

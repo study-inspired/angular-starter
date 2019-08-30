@@ -17,14 +17,8 @@ describe('LocalStorageService', () => {
     });
   });
 
-  function setup() {
-    const service: LocalStorageService = TestBed.get(LocalStorageService);
-
-    return { service };
-  }
-
   it('should be created', () => {
-    const { service } = setup();
+    const service: LocalStorageService = TestBed.get(LocalStorageService);
     expect(service).toBeTruthy();
   });
 
