@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import * as Sentry from '@sentry/browser';
 
 import { environment as env } from '@app/env';
+import { LoggerService } from '../../logger';
 import { HttpError } from '../../exception';
 
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
+
+  constructor(private loggerService: LoggerService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
@@ -19,6 +24,18 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   private errorHandler(error: HttpErrorResponse): Observable<HttpEvent<HttpError>> {
     if (!env.production) {
       // Do something with the error
+    }
+
+    // Capture 5xx status http requests
+    if (error.status.toString().match('^5[0-9]{2}$')) {
+      this.loggerService.captureException(new Error(error.message), {
+        tags: {
+          error: error.error,
+          name: error.name,
+          status: error.status
+        },
+        level: Sentry.Severity.Error
+      });
     }
 
     if (!error || error.status === 0) {

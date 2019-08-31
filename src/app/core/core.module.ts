@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
+import { NgModule, Optional, SkipSelf, ModuleWithProviders, ErrorHandler } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
@@ -16,6 +16,9 @@ import {
   ErrorHandlerInterceptor,
   RetryHttpRequestInterceptor
 } from './http';
+import { SentryService } from './logger';
+import { LoggerService } from './logger';
+import { AppErrorHandler } from './exception';
 
 @NgModule({
   imports: [
@@ -48,6 +51,8 @@ export class CoreModule {
         { provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: RetryHttpRequestInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true },
+        { provide: LoggerService, useClass: SentryService },
+        { provide: ErrorHandler, useClass: AppErrorHandler }
       ]
     };
   }
