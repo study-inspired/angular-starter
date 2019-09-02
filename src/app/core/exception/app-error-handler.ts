@@ -10,10 +10,11 @@ export class AppErrorHandler extends ErrorHandler {
   }
 
   handleError(error: Error) {
-    if (!defaultLoggerConfig.enable) {
-      return super.handleError(error);
+    super.handleError(error);
+
+    if (defaultLoggerConfig.enable) {
+      this.loggerService.captureException(error, null);
     }
 
-    this.loggerService.captureException(error, null);
   }
 }
