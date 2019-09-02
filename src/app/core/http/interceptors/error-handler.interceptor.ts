@@ -3,7 +3,6 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse
 
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import * as Sentry from '@sentry/browser';
 
 import { environment as env } from '@app/env';
 import { LoggerService } from '../../logger';
@@ -33,8 +32,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
           error: error.error,
           name: error.name,
           status: error.status
-        },
-        level: Sentry.Severity.Error
+        }
       });
     }
 

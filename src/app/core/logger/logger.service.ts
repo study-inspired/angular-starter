@@ -11,16 +11,16 @@ export abstract class LoggerService {
   /**
    * capture exception to logging platform
    *
-   * @param error
-   * @param context
+   * @param(Error) error
+   * @param() context
    */
   abstract captureException(error: Error, context: any);
 
   /**
    * capture info to logging platform
    *
-   * @param message
-   * @param tags
+   * @param(string) message
+   * @param() tags
    */
   abstract captureInfo(message: string, tags: any);
 

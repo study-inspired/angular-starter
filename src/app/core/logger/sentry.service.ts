@@ -29,7 +29,10 @@ export class SentryService extends LoggerService {
 
   captureException(error: Error, context: any) {
     Sentry.withScope(scope => {
-      scope.setContext(error.message, context);
+      scope.setContext(error.message, {
+        ...context,
+        level: Sentry.Severity.Error
+      });
       Sentry.captureException(error);
     });
   }

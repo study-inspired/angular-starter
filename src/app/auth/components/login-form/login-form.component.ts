@@ -40,12 +40,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // if (!this.form.valid) {
-    //   return;
-    // }
-    // this.login.emit(this.form.value);
-
-    throw new Error('test');
+    if (!this.form.valid) {
+      return;
+    }
+    this.login.emit(this.form.value);
   }
 
   private onLoginFormValuesChanged() {
