@@ -18,6 +18,10 @@ const routes: Routes = [
         data: { animation: 'closed' }
       },
       {
+        path: 'contacts',
+        loadChildren: './contact/contact.module#ContactModule'
+      },
+      {
         path: '**',
         redirectTo: ''
       }

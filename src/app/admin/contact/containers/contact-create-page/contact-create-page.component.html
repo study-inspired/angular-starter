@@ -1,0 +1,31 @@
+<div class="page-layout">
+  <div class="top-bg accent"></div>
+
+  <div class="center">
+    <div class="page-header accent"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center">
+
+      <div fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="8px">
+        <a mat-icon-button routerLink="../">
+          <mat-icon>arrow_back</mat-icon>
+        </a>
+
+        <h1 class="page-title mat-headline">Create new contact</h1>
+      </div>
+
+    </div>
+
+    <div class="page-content">
+      <app-contact-form
+        (save)="onCreate($event)">
+      </app-contact-form>
+    </div>
+
+  </div>
+
+</div>
