@@ -70,3 +70,11 @@ There are many use cases for Storybook:
 - sandbox
 - workshop
 - library
+
+## JSON Server
+
+```bash
+cd server
+npm install
+npm start
+```
