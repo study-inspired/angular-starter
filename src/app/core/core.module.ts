@@ -16,8 +16,7 @@ import {
   ErrorHandlerInterceptor,
   RetryHttpRequestInterceptor
 } from './http';
-import { SentryService } from './logger';
-import { LoggerService } from './logger';
+import { LoggerService, /* SentryService */ } from './logger';
 import { AppErrorHandler } from './exception';
 
 @NgModule({
@@ -51,7 +50,7 @@ export class CoreModule {
         { provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: RetryHttpRequestInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true },
-        { provide: LoggerService, useClass: SentryService },
+        { provide: LoggerService, useClass: LoggerService },
         { provide: ErrorHandler, useClass: AppErrorHandler }
       ]
     };

@@ -2,7 +2,7 @@ import * as Sentry from '@sentry/browser';
 
 import { LoggerService } from './logger.service';
 import { defaultSentryConfig } from './sentry.config';
-import { defaultLoggerConfig } from './logger.config';
+import { loggerConfig } from './logger.config';
 
 /**
  * A logger service implement use Sentry.io
@@ -22,12 +22,16 @@ export class SentryService extends LoggerService {
     Sentry.init({
       dsn: defaultSentryConfig.dsn,
       environment: defaultSentryConfig.environment,
-      enabled: defaultLoggerConfig.enable,
+      enabled: loggerConfig.enable,
       release: defaultSentryConfig.release
     });
   }
 
   captureException(error: Error, context: any) {
+    if (!loggerConfig.enable) {
+      return;
+    }
+
     Sentry.withScope(scope => {
       scope.setContext(error.message, {
         ...context,
@@ -38,6 +42,10 @@ export class SentryService extends LoggerService {
   }
 
   captureInfo(message: string, tags: any) {
+    if (!loggerConfig.enable) {
+      return;
+    }
+
     Sentry.captureEvent({
       message,
       tags,

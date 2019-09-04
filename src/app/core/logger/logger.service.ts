@@ -6,7 +6,7 @@
  *
  * @author Luan Tran
  */
-export abstract class LoggerService {
+export class LoggerService {
 
   /**
    * capture exception to logging platform
@@ -14,7 +14,11 @@ export abstract class LoggerService {
    * @param(Error) error
    * @param() context
    */
-  abstract captureException(error: Error, context: any);
+  captureException(error: Error, context: any) {
+    console.log('error: ', error);
+    console.log('context: ', context);
+    console.log('\n');
+  }
 
   /**
    * capture info to logging platform
@@ -22,6 +26,10 @@ export abstract class LoggerService {
    * @param(string) message
    * @param() tags
    */
-  abstract captureInfo(message: string, tags: any);
+  captureInfo(message: string, tags: any) {
+    console.log('message: ', message);
+    console.log('tags: ', tags);
+    console.log('\n');
+  }
 
 }

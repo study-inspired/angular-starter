@@ -1,6 +1,6 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 
-import { LoggerService, defaultLoggerConfig } from '../logger';
+import { LoggerService } from '../logger';
 
 @Injectable()
 export class AppErrorHandler extends ErrorHandler {
@@ -12,9 +12,6 @@ export class AppErrorHandler extends ErrorHandler {
   handleError(error: Error) {
     super.handleError(error);
 
-    if (defaultLoggerConfig.enable) {
-      this.loggerService.captureException(error, null);
-    }
-
+    this.loggerService.captureException(error, null);
   }
 }

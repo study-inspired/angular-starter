@@ -1,3 +1,5 @@
+import { environment } from '@app/env';
+
 /**
  * Logger configuration
  *
@@ -7,6 +9,6 @@ export interface LoggerConfiguration {
   enable: boolean;
 }
 
-export const defaultLoggerConfig: LoggerConfiguration = {
-  enable: false
+export const loggerConfig: LoggerConfiguration = {
+  enable: environment.enableLogger
 };
