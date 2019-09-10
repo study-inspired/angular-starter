@@ -1,7 +1,9 @@
 import { Component, OnInit, OnChanges, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
+import { MatDialog } from '@angular/material';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { ConfirmDialogComponent } from '@app/shared/dialog';
 import { ContactModel } from '../../models';
 
 @Component({
@@ -11,13 +13,17 @@ import { ContactModel } from '../../models';
 })
 export class ContactTableComponent implements OnInit, OnChanges {
   @Input() data: Array<ContactModel>;
-  @Output() selectionChange = new EventEmitter();
+
+  @Output() selectRow: EventEmitter<ContactModel> = new EventEmitter();
+  @Output() selectionChange: EventEmitter<Array<ContactModel>> = new EventEmitter();
+  @Output() delete: EventEmitter<ContactModel> = new EventEmitter();
+  @Output() disable: EventEmitter<ContactModel> = new EventEmitter();
 
   dataSource: MatTableDataSource<ContactModel>;
-  displayedColumns = ['select', 'username', 'name', 'email', 'phone'];
+  displayedColumns = ['select', 'username', 'name', 'email', 'phone', 'actions'];
   selection = new SelectionModel<ContactModel>(true, []);
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -26,6 +32,10 @@ export class ContactTableComponent implements OnInit, OnChanges {
     if (changes.data && this.data) {
       this.dataSource = new MatTableDataSource(this.data);
     }
+  }
+
+  onRowClicked(row: ContactModel) {
+    this.selectRow.emit(row);
   }
 
   isAllSelected() {
@@ -53,6 +63,34 @@ export class ContactTableComponent implements OnInit, OnChanges {
   deSelectAll() {
     this.selection.clear();
     this.selectionChange.emit(this.selection.selected);
+  }
+
+  onDeleteClicked(contact: ContactModel) {
+    this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Confirm',
+        message: 'Are you sure you want to delete?'
+      }
+    }).afterClosed()
+      .subscribe(confirm => {
+        if (confirm) {
+          this.delete.emit(contact);
+        }
+      });
+  }
+
+  onDisableClicked(contact: ContactModel) {
+    this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Confirm',
+        message: 'Are you sure you want to delete?'
+      }
+    }).afterClosed()
+      .subscribe(confirm => {
+        if (confirm) {
+          this.disable.emit(contact);
+        }
+      });
   }
 
 }

@@ -50,6 +50,7 @@
         <ng-container *ngIf="contacts$ | async as contacts; else lonelyHere">
           <app-contact-table #contactTable
             [data]="contacts"
+            (selectRow)="onSelectRow($event)"
             (selectionChange)="onSelectionChange($event)">
           </app-contact-table>
         </ng-container>

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs';
@@ -24,11 +25,11 @@ export class ContactListPageComponent implements OnInit {
   isShowActions = false;
 
   constructor(
+    private router: Router,
     private store: Store<ContactState>,
     private dialog: MatDialog
   ) {
     this.store.dispatch(ContactActions.findContact({ query: {} }));
-
     this.contacts$ = this.store.pipe(select(ContactSelectors.selectAllContacts));
   }
 
@@ -47,6 +48,10 @@ export class ContactListPageComponent implements OnInit {
         message: 'Are you sure you want to delete all selected contacts?'
       }
     });
+  }
+
+  onSelectRow(contact: ContactModel) {
+    this.router.navigateByUrl(`./${contact.id}`);
   }
 
   deSelectAll() {

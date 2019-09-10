@@ -9,7 +9,8 @@ import {
   MatIconModule,
   MatCheckboxModule,
   MatProgressBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatMenuModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -28,7 +29,8 @@ const MAT_MODULES = [
   MatIconModule,
   MatCheckboxModule,
   MatProgressBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatMenuModule
 ];
 
 @NgModule({
