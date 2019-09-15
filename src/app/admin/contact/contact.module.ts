@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule } from '@ngx-translate/core';
@@ -10,7 +11,9 @@ import {
   MatCheckboxModule,
   MatProgressBarModule,
   MatDialogModule,
-  MatMenuModule
+  MatMenuModule,
+  MatInputModule,
+  MatFormFieldModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -30,12 +33,15 @@ const MAT_MODULES = [
   MatCheckboxModule,
   MatProgressBarModule,
   MatDialogModule,
-  MatMenuModule
+  MatMenuModule,
+  MatInputModule,
+  MatFormFieldModule
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     StoreModule.forFeature(featureKey, reducer),
     EffectsModule.forFeature(EFFECTS),
     TranslateModule.forChild(),

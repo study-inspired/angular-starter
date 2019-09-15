@@ -6,4 +6,4 @@ export const SERVICES = [
 
 export {
   ContactService
-}
+};

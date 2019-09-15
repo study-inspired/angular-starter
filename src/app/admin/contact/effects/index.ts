@@ -6,4 +6,4 @@ export const EFFECTS = [
 
 export {
   ContactEffect
-}
+};

@@ -9,17 +9,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-        data: { animation: 'open' }
-      },
-      {
-        path: 'users',
-        loadChildren: () => import('./user/user.module').then(m => m.UserModule),
-        data: { animation: 'closed' }
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'contacts',
-        loadChildren: './contact/contact.module#ContactModule'
+        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
       },
       {
         path: '**',

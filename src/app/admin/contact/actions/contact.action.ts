@@ -18,7 +18,6 @@ export const findContactFailure = createAction(
   props<{ error: HttpError }>()
 );
 
-
 export const findContactById = createAction(
   '[Contact] Find contact by id',
   props<{ id: string }>()
@@ -33,7 +32,6 @@ export const findContactByIdFailure = createAction(
   '[Contact] Find contact by id failure',
   props<{ error: HttpError }>()
 );
-
 
 export const createContact = createAction(
   '[Contact] Create contact',
@@ -50,7 +48,6 @@ export const createContactFailure = createAction(
   props<{ error: HttpError }>()
 );
 
-
 export const updateContact = createAction(
   '[Contact] Update contact',
   props<{ id: string; contact: UpdateContactModel }>()
@@ -65,7 +62,6 @@ export const updateContactFailure = createAction(
   '[Contact] Update contact failure',
   props<{ error: HttpError }>()
 );
-
 
 export const deleteContact = createAction(
   '[Contact] Delete contact',

@@ -41,4 +41,3 @@ export const slideInTop =
     transition('void => *', animate('300ms')),
     transition('* => *', animate('300ms'))
   ]);
-
