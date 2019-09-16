@@ -14,3 +14,8 @@ export const {
   selectAll: selectAllContacts,
   selectTotal: selectTotalContacts,
 } = fromContact.adapter.getSelectors(selectContactEntitiesState);
+
+export const selectContactById = (id: string) => createSelector(
+  selectContactEntities,
+  (contactEntities) => contactEntities[id]
+);

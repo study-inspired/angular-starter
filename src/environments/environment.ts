@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   enableLogger: true,
-  apiBaseUrl: 'http://localhost:3000/',
+  apiBaseUrl: 'http://localhost:3000/api/',
   http: {
     maxRetryAttempts: 0
   }

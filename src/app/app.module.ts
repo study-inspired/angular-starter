@@ -10,14 +10,19 @@ import { AppLayoutModule } from '@app/layout';
 import { AuthModule, AuthConfiguration } from '@app/auth';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { environment } from '@app/env';
 
 const authConfig: AuthConfiguration = {
   loginURL: 'login',
   loginApiURL: 'auth/login',
   headerName: 'Authorization',
   skipWhenExpired: true,
-  whitelistedDomains: [],
-  blacklistedRoutes: []
+  whitelistedDomains: [
+    environment.apiBaseUrl
+  ],
+  blacklistedRoutes: [
+    'auth/login'
+  ]
 };
 @NgModule({
   imports: [

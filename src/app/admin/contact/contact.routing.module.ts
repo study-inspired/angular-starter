@@ -4,8 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   ContactListPageComponent,
   ContactCreatePageComponent,
-  ContactDetailPageComponent,
-  ContactEditPageComponent
+  ContactDetailPageComponent
 } from './containers';
 
 const routes: Routes = [
@@ -20,10 +19,6 @@ const routes: Routes = [
   {
     path: ':id',
     component: ContactDetailPageComponent
-  },
-  {
-    path: ':id/edit',
-    component: ContactEditPageComponent
   }
 ];
 

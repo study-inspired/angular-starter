@@ -20,7 +20,7 @@
         fxLayoutGap="8px">
         <button mat-raised-button
           (click)="onDeleteSelectedContacts()">
-          Delete
+          {{ 'general.delete' | translate }}
         </button>
       </div>
     </div>
@@ -35,11 +35,11 @@
           fxLayoutAlign="space-between center"
           fxLayoutGap="8px">
           <mat-icon>account_box</mat-icon>
-          <span>Contacts</span>
+          <span>{{ 'contact.contactList.pageTitle' | translate }}</span>
         </h1>
 
         <a mat-raised-button routerLink="./create">
-          <span>Add new</span>
+          <span>{{ 'general.addNew' | translate }}</span>
         </a>
       </div>
 

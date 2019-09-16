@@ -3,6 +3,7 @@ export const i18n = {
   modules: [
     'general',
     'auth',
-    'account'
+    'account',
+    'contact'
   ]
 };

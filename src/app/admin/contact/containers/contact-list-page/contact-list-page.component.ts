@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs';
@@ -26,6 +26,7 @@ export class ContactListPageComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private store: Store<ContactState>,
     private dialog: MatDialog
   ) {
@@ -51,7 +52,7 @@ export class ContactListPageComponent implements OnInit {
   }
 
   onSelectRow(contact: ContactModel) {
-    this.router.navigateByUrl(`./${contact.id}`);
+    this.router.navigate([contact.id], { relativeTo: this.route });
   }
 
   deSelectAll() {

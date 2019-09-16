@@ -13,7 +13,8 @@ import {
   MatDialogModule,
   MatMenuModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatTabsModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -35,7 +36,8 @@ const MAT_MODULES = [
   MatDialogModule,
   MatMenuModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatTabsModule
 ];
 
 @NgModule({

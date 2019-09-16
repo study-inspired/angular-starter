@@ -9,7 +9,7 @@ export class ContactService {
   constructor(private http: HttpClient) { }
 
   public find(): Observable<any> {
-    return this.http.get(`https://jsonplaceholder.typicode.com/users`);
+    return this.http.get(`contacts`);
   }
 
   public findById(id: string): Observable<ContactModel> {

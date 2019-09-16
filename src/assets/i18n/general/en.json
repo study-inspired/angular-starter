@@ -3,6 +3,11 @@
     "login": "Login",
     "logout": "Logout",
     "ok": "Ok",
-    "cancel": "Cancel"
+    "addNew": "Add new",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "saveChange": "Save change"
   }
 }
