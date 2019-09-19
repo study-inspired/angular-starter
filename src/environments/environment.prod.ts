@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   enableLogger: false,
-  apiBaseUrl: 'http://localhost:3000/',
+  apiBaseUrl: 'https://angular-starter-api.herokuapp.com/',
   http: {
     maxRetryAttempts: 0
   }

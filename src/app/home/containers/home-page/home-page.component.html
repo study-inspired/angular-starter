@@ -5,8 +5,11 @@
     <span class="spacer"></span>
 
     <div>
-      <button mat-button routerLink="login">Login</button>
-      <button mat-button [matMenuTriggerFor]="languageMenu">EN</button>
+      <button *ngIf="!(loggedIn$ | async)" mat-button routerLink="login">Login</button>
+      <button *ngIf="loggedIn$ | async" mat-button routerLink="admin">Dashboard</button>
+      <button mat-button [matMenuTriggerFor]="languageMenu">
+        {{ selectedLanguage$ | async | uppercase }}
+      </button>
 
       <mat-menu #languageMenu="matMenu">
         <button mat-menu-item (click)="onLanguageSelect('en')">

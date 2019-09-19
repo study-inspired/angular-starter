@@ -13,7 +13,7 @@ const selectAppSettings = createSelector(
   (state: AppSettingsState) => state
 );
 
-const selectCurrentLanguage = createSelector(
+export const selectCurrentLanguage = createSelector(
   selectAppSettingsState,
   (state: AppSettingsState) => state.language
 );

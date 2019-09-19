@@ -8,7 +8,9 @@
 
     <div>
       <button mat-button (click)="onLogoutClicked()">{{ 'general.logout' | translate }}</button>
-      <button mat-button [matMenuTriggerFor]="languageMenu">EN</button>
+      <button mat-button [matMenuTriggerFor]="languageMenu">
+        {{ selectedLanguage$ | async | uppercase }}
+      </button>
 
       <mat-menu #languageMenu="matMenu">
         <button mat-menu-item (click)="onLanguageSelect('en')">

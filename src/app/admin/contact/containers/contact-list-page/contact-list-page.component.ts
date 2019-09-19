@@ -8,7 +8,7 @@ import { ConfirmDialogComponent } from '@app/shared/dialog';
 import { ContactModel } from '../../models';
 import { ContactState } from '../../reducers';
 import { ContactActions } from '../../actions';
-import { ContactSelectors } from '../../selectors';
+import { ContactSelectors, ContactListPageSelectors } from '../../selectors';
 import { ContactTableComponent } from '../../components';
 
 @Component({
@@ -30,8 +30,10 @@ export class ContactListPageComponent implements OnInit {
     private store: Store<ContactState>,
     private dialog: MatDialog
   ) {
-    this.store.dispatch(ContactActions.findContact({ query: {} }));
     this.contacts$ = this.store.pipe(select(ContactSelectors.selectAllContacts));
+    this.pending$ = this.store.pipe(select(ContactListPageSelectors.selectContactListPagePending));
+
+    this.store.dispatch(ContactActions.findContact({ query: {} }));
   }
 
   ngOnInit() {
