@@ -1,16 +1,13 @@
-<mat-drawer-container class="drawer-container">
-  <mat-drawer mode="side" opened class="sidenav-container">
-
+<div class="admin-layout admin-container">
+  <nav class="sidenav-container">
     <app-admin-sidebar></app-admin-sidebar>
-
-  </mat-drawer>
-  <mat-drawer-content>
-
+  </nav>
+  <main>
     <app-admin-toolbar></app-admin-toolbar>
 
-    <div class="inner-scroll">
+    <div class="main-content">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>
 
-  </mat-drawer-content>
-</mat-drawer-container>
+  </main>
+</div>

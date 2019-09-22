@@ -1,6 +1,5 @@
 
 <p align="center">
-  <img src="meta/images/logo.png">
   
   <br />
   <p align="center">
@@ -17,6 +16,9 @@
     <img src="https://img.shields.io/github/last-commit/truonghungit/angular-ngrx-material-starter.svg?style=flat-square" />
   </a>
   </p>
+
+  
+  <img src="meta/images/contact-page.png">
 </p>
 
 ---
