@@ -5,8 +5,13 @@
     <span class="spacer"></span>
 
     <div>
-      <button *ngIf="(loggedIn$ | async) === false" mat-button routerLink="login">Login</button>
-      <button *ngIf="loggedIn$ | async" mat-button routerLink="admin">Dashboard</button>
+      <ng-container *ngIf="loggedIn$ | async; else loginBlock">
+        <button mat-button routerLink="admin">Dashboard</button>
+      </ng-container>
+      <ng-template #loginBlock>
+        <button mat-button routerLink="login">Login</button>
+      </ng-template>
+
       <button mat-button [matMenuTriggerFor]="languageMenu">
         {{ selectedLanguage$ | async | uppercase }}
       </button>

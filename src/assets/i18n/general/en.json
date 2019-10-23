@@ -1,12 +1,12 @@
 {
   "general": {
+    "addNew": "Add new",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
     "login": "Login",
     "logout": "Logout",
     "ok": "Ok",
-    "addNew": "Add new",
-    "cancel": "Cancel",
-    "edit": "Edit",
-    "delete": "Delete",
     "save": "Save",
     "saveChange": "Save change"
   }

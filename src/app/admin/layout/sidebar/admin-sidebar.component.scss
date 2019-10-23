@@ -24,7 +24,7 @@ mat-toolbar {
   padding: 8px 0;
   flex-grow: 1;
   background-color: #2d323e;
-  color: #fff;
+  color: #919bae;
 }
 
 .group-title {
@@ -44,19 +44,23 @@ mat-toolbar {
   display: flex;
   align-items: center;
   padding: 12px 12px 12px 24px;
+  border-left: 3px solid #2d323e;
   position: relative;
   overflow: hidden;
+  font-weight: 200;
+  font-size: 0.875rem;
   cursor: pointer;
   user-select: none;
   color: currentColor;
 
   &:hover {
     background-color: rgba(0, 0, 0, .04);
+    border-left-color: #039be5;
   }
 
   &.active {
-    background-color: #039be5 !important;
     color: #fff !important;
+    border-left-color: #039be5;
   }
 
   .nav-link-icon {

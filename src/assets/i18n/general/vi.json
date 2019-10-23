@@ -1,12 +1,12 @@
 {
   "general": {
+    "addNew": "Thêm mới",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Chỉnh sửa",
     "login": "Đăng nhập",
     "logout": "Đăng xuất",
     "ok": "Đồng ý",
-    "addNew": "Thêm mới",
-    "cancel": "Hủy",
-    "edit": "Chỉnh sửa",
-    "delete": "Xóa",
     "save": "Lưu",
     "saveChange": "Lưu thay đổi"
   }

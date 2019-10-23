@@ -1,63 +1,64 @@
-<div class="page-layout"
-  [ngClass]="{'show-actions-bar': isShowActions}">
-    <div class="top-bg accent"></div>
+<div class="page-layout" [ngClass]="{'show-actions-bar': isShowActions}">
+  <div class="top-bg accent"></div>
 
-    <div class="actions-bar"
-      fxLayout="row"
-      fxLayoutAlign="space-between center">
-      <div fxLayout="row"
-        fxLayoutAlign="start center"
-        fxLayoutGap="8px">
-        <button mat-icon-button (click)="deSelectAll()">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-        <span>
-          {{selectedContacts.length}} Item<span *ngIf="selectedContacts.length > 1">s</span> selected
-        </span>
-      </div>
-      <div fxLayout="row"
-        fxLayoutAlign="start center"
-        fxLayoutGap="8px">
-        <button mat-raised-button
-          (click)="onDeleteSelectedContacts()">
-          {{ 'general.delete' | translate }}
-        </button>
-      </div>
+  <div class="actions-bar" fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+      <button mat-icon-button (click)="deSelectAll()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span>
+        {{selectedContacts.length}} Item<span *ngIf="selectedContacts.length > 1">s</span> selected
+      </span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+      <button mat-raised-button (click)="onDeleteSelectedContacts()">
+        {{ 'general.delete' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <div class="center">
+    <div class="page-header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+      <h1 class="page-title mat-headline" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px">
+        <mat-icon>account_box</mat-icon>
+        <span>{{ 'contact.contactList.pageTitle' | translate }}</span>
+      </h1>
+
+      <a mat-raised-button routerLink="./create">
+        <span>{{ 'general.addNew' | translate }}</span>
+      </a>
     </div>
 
-    <div class="center">
-      <div class="page-header accent"
-        fxLayout="row"
-        fxLayoutAlign="space-between center">
+    <div class="page-content">
 
-        <h1 class="page-title mat-headline"
-          fxLayout="row"
-          fxLayoutAlign="space-between center"
-          fxLayoutGap="8px">
-          <mat-icon>account_box</mat-icon>
-          <span>{{ 'contact.contactList.pageTitle' | translate }}</span>
-        </h1>
+      <ng-container
+        *ngIf="notEmpty$ | async; else lonelyHere">
 
-        <a mat-raised-button routerLink="./create">
-          <span>{{ 'general.addNew' | translate }}</span>
-        </a>
-      </div>
+        <app-contact-table
+          #contactTable
+          [data]="contacts$ | async"
+          (selectRow)="onSelectRow($event)"
+          (selectionChange)="onSelectionChange($event)">
+        </app-contact-table>
 
-      <div class="page-content">
+      </ng-container>
 
-        <ng-container *ngIf="contacts$ | async as contacts; else lonelyHere">
-          <app-contact-table #contactTable
-            [data]="contacts"
-            (selectRow)="onSelectRow($event)"
-            (selectionChange)="onSelectionChange($event)">
-          </app-contact-table>
-        </ng-container>
+      <ng-template #lonelyHere>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <ng-container
+            *ngIf="pending$ | async; else empty" >
+             <mat-spinner diameter="40"></mat-spinner>
+           </ng-container>
 
-        <ng-template #lonelyHere>
-        </ng-template>
-
-      </div>
+           <ng-template #empty>
+             No Contact
+           </ng-template>
+        </div>
+      </ng-template>
 
     </div>
 
   </div>
+
+</div>

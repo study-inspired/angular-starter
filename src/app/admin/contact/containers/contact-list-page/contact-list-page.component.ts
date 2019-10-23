@@ -10,6 +10,7 @@ import { ContactState } from '../../reducers';
 import { ContactActions } from '../../actions';
 import { ContactSelectors, ContactListPageSelectors } from '../../selectors';
 import { ContactTableComponent } from '../../components';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact-list-page',
@@ -18,7 +19,9 @@ import { ContactTableComponent } from '../../components';
 })
 export class ContactListPageComponent implements OnInit {
   @ViewChild('contactTable', { static: false }) contactTable: ContactTableComponent;
+
   pending$: Observable<boolean>;
+  notEmpty$: Observable<boolean>;
   contacts$: Observable<Array<ContactModel>>;
 
   selectedContacts: Array<ContactModel> = [];
@@ -32,6 +35,7 @@ export class ContactListPageComponent implements OnInit {
   ) {
     this.contacts$ = this.store.pipe(select(ContactSelectors.selectAllContacts));
     this.pending$ = this.store.pipe(select(ContactListPageSelectors.selectContactListPagePending));
+    this.notEmpty$ = this.contacts$.pipe(map(contacts => !!contacts && contacts.length > 0));
 
     this.store.dispatch(ContactActions.findContact({ query: {} }));
   }

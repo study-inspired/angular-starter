@@ -1,38 +1,38 @@
 {
   "auth": {
-    "pageTitle": {
-      "login": "Login",
-      "forgotPassword": "Recover your password",
-      "resetPassword": "Reset password",
-      "lock": "Your session is locked"
-    },
-    "label": {
-      "username": "Email",
-      "email": "Email",
-      "password": "Password",
-      "confirmPassword": "Confirm Password:"
-    },
     "button": {
       "login": "Login",
+      "resetPassword": "Reset password",
       "sendResetLink": "Send reset link",
-      "unlock": "Unlock",
-      "resetPassword": "Reset password"
+      "unlock": "Unlock"
     },
     "error": {
-      "username": {
-        "required": "Email is required"
+      "confirmPassword": {
+        "mustMatch": "Confirm password does not match the password ",
+        "required": "Password confirmation is required!"
       },
       "email": {
-        "required": "Email is required",
-        "invalid": "Please enter a valid email"
+        "invalid": "Please enter a valid email",
+        "required": "Email is required"
       },
       "password": {
         "required": "Password is required"
       },
-      "confirmPassword": {
-        "required": "Password confirmation is required!",
-        "mustMatch": "Confirm password does not match the password "
+      "username": {
+        "required": "Email is required"
       }
+    },
+    "label": {
+      "confirmPassword": "Confirm Password:",
+      "email": "Email",
+      "password": "Password",
+      "username": "Email"
+    },
+    "pageTitle": {
+      "forgotPassword": "Recover your password",
+      "lock": "Your session is locked",
+      "login": "Login",
+      "resetPassword": "Reset password"
     }
   }
 }

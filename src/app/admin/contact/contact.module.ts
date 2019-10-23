@@ -14,7 +14,8 @@ import {
   MatMenuModule,
   MatInputModule,
   MatFormFieldModule,
-  MatTabsModule
+  MatTabsModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -33,6 +34,7 @@ const MAT_MODULES = [
   MatIconModule,
   MatCheckboxModule,
   MatProgressBarModule,
+  MatProgressSpinnerModule,
   MatDialogModule,
   MatMenuModule,
   MatInputModule,
