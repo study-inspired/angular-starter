@@ -8,6 +8,10 @@ export interface State extends EntityState<ContactModel> {
 }
 
 export function sortByUsername(a: ContactModel, b: ContactModel): number {
+  if (!a.username || !b.username) {
+    return 0;
+  }
+
   return a.username.localeCompare(b.username);
 }
 

@@ -30,7 +30,7 @@
       </a>
     </div>
 
-    <div class="page-content">
+    <div class="page-content no-padding" perfectScrollbar>
 
       <ng-container
         *ngIf="notEmpty$ | async; else lonelyHere">
@@ -45,14 +45,17 @@
       </ng-container>
 
       <ng-template #lonelyHere>
-        <div fxLayout="row" fxLayoutAlign="center center">
-          <ng-container
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <div class="loading" fxLayout="column" fxLayoutAlign="center center"
             *ngIf="pending$ | async; else empty" >
              <mat-spinner diameter="40"></mat-spinner>
-           </ng-container>
+             <p>Fetching data</p>
+          </div>
 
            <ng-template #empty>
-             No Contact
+             <div class="no-result">
+              No Contact
+             </div>
            </ng-template>
         </div>
       </ng-template>

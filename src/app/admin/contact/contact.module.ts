@@ -18,6 +18,7 @@ import {
   MatProgressSpinnerModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 import { DialogModule } from '@app/shared/dialog';
 import { ContactRoutingModule } from './contact.routing.module';
@@ -49,6 +50,7 @@ const MAT_MODULES = [
     StoreModule.forFeature(featureKey, reducer),
     EffectsModule.forFeature(EFFECTS),
     TranslateModule.forChild(),
+    PerfectScrollbarModule,
     MAT_MODULES,
     FlexLayoutModule,
     DialogModule,
