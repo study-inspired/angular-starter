@@ -1,10 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
 
 import { CreateContactModel } from '../../models';
 import { ContactState } from '../../reducers';
 import { ContactActions } from '../../actions';
 import { ContactFormComponent } from '../../components';
+import { ContactDetailPageSelectors } from '../../selectors';
 
 @Component({
   selector: 'app-contact-create-page',
@@ -12,16 +15,22 @@ import { ContactFormComponent } from '../../components';
   styleUrls: ['./contact-create-page.component.scss']
 })
 export class ContactCreatePageComponent implements OnInit {
-  @ViewChild(ContactFormComponent, { static: true }) form: ContactFormComponent;
+  @ViewChild(ContactFormComponent, { static: true }) contactForm: ContactFormComponent;
+
+  pending$: Observable<boolean>;
 
   constructor(
     private store: Store<ContactState>
-  ) { }
+  ) {
+    this.store.pipe(select(ContactDetailPageSelectors.selectContactDetailPageSaving));
+  }
 
   ngOnInit() {
   }
 
-  onCreate(contact: CreateContactModel): void {
+  onCreate(): void {
+    const contact: CreateContactModel = this.contactForm.form.value;
+
     this.store.dispatch(ContactActions.createContact({ contact }));
   }
 

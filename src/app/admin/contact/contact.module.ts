@@ -21,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 import { DialogModule } from '@app/shared/dialog';
+import { NotificationModule } from '@app/shared/notification';
 import { ContactRoutingModule } from './contact.routing.module';
 import { featureKey } from './contact.config';
 import { reducer } from './reducers';
@@ -54,6 +55,7 @@ const MAT_MODULES = [
     MAT_MODULES,
     FlexLayoutModule,
     DialogModule,
+    NotificationModule,
     ContactRoutingModule
   ],
   declarations: [

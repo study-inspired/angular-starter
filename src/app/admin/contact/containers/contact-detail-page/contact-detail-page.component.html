@@ -20,7 +20,10 @@
       <div fxLayout="row"
         fxLayoutAlign="start center"
         fxLayoutGap="8px">
-        <button mat-raised-button color="primary" *ngIf="form.dirty" [disabled]="form.invalid || !form.dirty">
+        <button mat-raised-button color="primary"
+          *ngIf="contactForm.dirty"
+          (click)="onUpdate()"
+          [disabled]="(saving$ | async) || contactForm.invalid || !contactForm.dirty">
           <span>{{ 'general.saveChange' | translate }}</span>
         </button>
         <button mat-raised-button color="warn" (click)="onDeleteClicked(contact)">
@@ -31,8 +34,7 @@
 
     <div class="page-content" perfectScrollbar>
       <app-contact-form
-        [contact]="contact$ | async"
-        (valueChange)="onFormValueChange($event)">
+        [contact]="contact$ | async">
       </app-contact-form>
     </div>
 

@@ -16,14 +16,16 @@
         <h1 class="page-title mat-headline">Create new contact</h1>
       </div>
 
-      <button mat-raised-button color="primary">
+      <button mat-raised-button color="primary"
+        [disabled]="(pending$ | async)"
+        (click)="onCreate()">
         <span>{{ 'general.save' | translate }}</span>
       </button>
     </div>
 
     <div class="page-content" perfectScrollbar>
       <app-contact-form
-        (save)="onCreate($event)">
+        (save)="onCreate()">
       </app-contact-form>
     </div>
 

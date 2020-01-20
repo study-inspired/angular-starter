@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, catchError, exhaustMap } from 'rxjs/operators';
+import { map, catchError, exhaustMap, tap } from 'rxjs/operators';
 
+import { NotificationService } from '@app/shared/notification';
 import { ContactActions } from '../actions';
 import { ContactService } from '../services';
 
@@ -60,6 +61,16 @@ export class ContactEffect {
     )
   );
 
+  onUpdateContactSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ContactActions.updateContactSuccess),
+      tap(() => {
+        this.notify.show({ message: 'Update contact success', type: 'success' });
+      })
+    ),
+    { dispatch: false }
+  );
+
   deleteContact$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ContactActions.deleteContact),
@@ -76,5 +87,6 @@ export class ContactEffect {
   constructor(
     private actions$: Actions,
     private contactService: ContactService,
+    private notify: NotificationService
   ) { }
 }

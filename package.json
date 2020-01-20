@@ -14,7 +14,8 @@
     "e2e": "ng e2e",
     "deploy": "firebase deploy --only hosting",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook --output-dir dist/angular-ngrx-material-starter/storybook",
+    "build-and-deploy": "npm run build:prod && npm run build-storybook && npm run deploy"
   },
   "private": true,
   "contributes": {

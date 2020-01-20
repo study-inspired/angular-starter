@@ -15,15 +15,12 @@ export const reducer = createReducer(
 
   on(
     ContactActions.findContact,
-    ContactActions.findContactById,
     (state) => ({ ...state, pending: true })
   ),
 
   on(
     ContactActions.findContactSuccess,
     ContactActions.findContactFailure,
-    ContactActions.findContactByIdSuccess,
-    ContactActions.findContactByIdFailure,
     (state) => ({ ...state, pending: false })
   )
 );

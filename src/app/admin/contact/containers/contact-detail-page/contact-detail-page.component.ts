@@ -5,13 +5,12 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { FormValueChangeEvent } from '@app/core/form';
 import { takeUntilDestroy } from '@app/core/destroyable';
 import { ConfirmDialogComponent } from '@app/shared/dialog';
 import { ContactModel, UpdateContactModel } from '../../models';
 import { ContactState } from '../../reducers';
 import { ContactActions } from '../../actions';
-import { ContactSelectors } from '../../selectors';
+import { ContactSelectors, ContactDetailPageSelectors } from '../../selectors';
 import { ContactFormComponent } from '../../components';
 
 @Component({
@@ -20,10 +19,12 @@ import { ContactFormComponent } from '../../components';
   styleUrls: ['./contact-detail-page.component.scss']
 })
 export class ContactDetailPageComponent implements OnInit {
-  @ViewChild(ContactFormComponent, { static: true }) form: ContactFormComponent;
+  @ViewChild(ContactFormComponent, { static: true }) contactForm: ContactFormComponent;
 
-  pending$: Observable<boolean>;
+  loading$: Observable<boolean>;
+  saving$: Observable<boolean>;
   contact$: Observable<ContactModel>;
+  contactId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,10 +37,13 @@ export class ContactDetailPageComponent implements OnInit {
         takeUntilDestroy(this)
       )
       .subscribe(params => {
-        const contactId = params.id;
-        this.store.dispatch(ContactActions.findContactById({ id: contactId }));
-        this.contact$ = this.store.pipe(select(ContactSelectors.selectContactById(contactId)));
+        this.contactId = params.id;
+        this.store.dispatch(ContactActions.findContactById({ id: this.contactId }));
+        this.contact$ = this.store.pipe(select(ContactSelectors.selectContactById(this.contactId)));
       });
+
+    this.loading$ = this.store.pipe(select(ContactDetailPageSelectors.selectContactDetailPageLoading));
+    this.saving$ = this.store.pipe(select(ContactDetailPageSelectors.selectContactDetailPageSaving));
   }
 
   ngOnInit() {
@@ -59,16 +63,14 @@ export class ContactDetailPageComponent implements OnInit {
     }).afterClosed()
       .subscribe(confirm => {
         if (confirm) {
-          this.store.dispatch(ContactActions.deleteContact({ id: contact.id }));
+          this.store.dispatch(ContactActions.deleteContact({ id: this.contactId }));
         }
       });
   }
 
-  onFormValueChange(event: FormValueChangeEvent): void {
-    if (event.valid && event.value) {
-      const contact = event.value as UpdateContactModel;
-      this.store.dispatch(ContactActions.updateContact({ id: contact.id, contact }));
-    }
+  onUpdate(): void {
+    const contact: UpdateContactModel = this.contactForm.form.value;
+    this.store.dispatch(ContactActions.updateContact({ id: this.contactId, contact }));
   }
 
 }
