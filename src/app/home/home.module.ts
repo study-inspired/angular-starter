@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatCardModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -10,7 +10,8 @@ const MAT_MODULES = [
   MatToolbarModule,
   MatButtonModule,
   MatMenuModule,
-  MatIconModule
+  MatIconModule,
+  MatCardModule,
 ];
 
 @NgModule({

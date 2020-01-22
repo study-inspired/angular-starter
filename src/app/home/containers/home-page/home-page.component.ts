@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
 import { AppState } from '@app/core/store';
-import { Language } from '@app/core/i18n';
-import { appSettingsAction, selectCurrentLanguage } from '@app/core/app-settings';
 import { AuthSelectors } from '@app/auth';
 
 @Component({
@@ -14,15 +12,9 @@ import { AuthSelectors } from '@app/auth';
 export class HomePageComponent {
 
   loggedIn$ = this.store.pipe(select(AuthSelectors.selectIsAuthenticated));
-  selectedLanguage$ = this.store.pipe(select(selectCurrentLanguage));
 
   constructor(
     private store: Store<AppState>
   ) {
-  }
-
-  onLanguageSelect(language: Language) {
-    this.store.dispatch(appSettingsAction.changeLanguage({ language }));
-
   }
 }

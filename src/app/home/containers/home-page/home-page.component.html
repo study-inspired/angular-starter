@@ -1,6 +1,7 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Angular NgRx Material Starter</span>
+<div class="header-bg"></div>
+<nav fxLayout="row" fxLayoutAlign="center center">
+  <div class="container" fxLayout="row">
+    <img class="logo" src="assets/images/logo.svg" alt="logo" srcset="">
 
     <span class="spacer"></span>
 
@@ -11,22 +12,176 @@
       <ng-template #loginBlock>
         <button mat-button routerLink="login">Login</button>
       </ng-template>
+    </div>
+  </div>
+</nav>
 
-      <button mat-button [matMenuTriggerFor]="languageMenu">
-        {{ selectedLanguage$ | async | uppercase }}
-      </button>
+<section class="intro">
+  <div class="container">
+    <h1 class="leading">Angular Stater</h1>
+    <p>A complete Angular 8, NgRx, Angular CLI & Angular Material starter project</p>
+    <div class="img">
+      <img src="assets/images/contact-page.png" alt="" srcset="">
+    </div>
+  </div>
+</section>
 
-      <mat-menu #languageMenu="matMenu">
-        <button mat-menu-item (click)="onLanguageSelect('en')">
-          <span>English (United States)</span>
-        </button>
-
-        <button mat-menu-item (click)="onLanguageSelect('vi')">
-          <span>Tiếng Việt (Việt Nam)</span>
-        </button>
-
-      </mat-menu>
+<section>
+  <div class="container" fxLayout="row">
+    <div fxFlex="50%">
+      <div class="section-content">
+        <h2 class="section-title">A great Angular starter</h2>
+        <p class="section-decs">
+          With the included apps and pages, Angular NgRx Material starter is a great kick-starter for your next project.
+          Don’t lose any time
+          trying
+          to design or structure your pages, pick one and start coding your logic right away!
+        </p>
+      </div>
     </div>
 
-  </mat-toolbar-row>
-</mat-toolbar>
+    <div fxFlex="50%">
+      <img src="assets/images/contact-page.png" alt="" srcset="">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container" fxLayout="row">
+    <div fxFlex="50%">
+      <img src="assets/images/clean-code.png" alt="" srcset="">
+    </div>
+    <div fxFlex="50%">
+      <div class="section-content right">
+        <h2 class="section-title">Clean code</h2>
+        <p class="section-decs">With well clean code, whether a beginner or a seasoned Angular developer, you will
+          find something interesting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container" fxLayout="row">
+    <div fxFlex="50%">
+      <div class="section-content">
+        <h2 class="section-title">Ready to use</h2>
+        <p class="section-decs">Ready-to-use page layouts making it extremely easy to
+          switch out individual page designs or creating a new one. It also makes your pages consistent across your app.
+        </p>
+      </div>
+    </div>
+    <div fxFlex="50%">
+      <img src="assets/images/contact-page.png" alt="" srcset="">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container" fxLayout="column" fxLayoutAlign="start center">
+    <div class="section-content text-center">
+      <h2 class="section-title">Other <strong>Features</strong></h2>
+      <p class="section-decs">
+        With the included apps and pages, Angular NgRx Material starter is a great kick-starter for your next project.
+        Don’t lose any time
+        trying
+        to design or structure your pages, pick one and start coding your logic right away!
+      </p>
+    </div>
+
+    <div class="features">
+      <div class="feature-item">
+        <mat-card>
+          <mat-icon>color_lens</mat-icon>
+          <div class="title mat-subheading-2">Flexible theming </div>
+          <p class="decs mat-body">
+            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit
+          </p>
+        </mat-card>
+      </div>
+
+      <div class="feature-item">
+        <mat-card>
+          <mat-icon>language</mat-icon>
+          <div class="title mat-subheading-2">I18n</div>
+          <p class="decs mat-body">
+            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit.
+          </p>
+        </mat-card>
+      </div>
+
+      <div class="feature-item">
+        <mat-card>
+          <mat-icon>code</mat-icon>
+          <div class="title mat-subheading-2">Clean Structure</div>
+          <p class="decs mat-body">
+            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit
+          </p>
+        </mat-card>
+      </div>
+
+      <div class="feature-item">
+        <mat-card>
+          <mat-icon>attach_money</mat-icon>
+          <div class="title mat-subheading-2">Free</div>
+          <p class="decs mat-body">
+            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed
+            porttitor lectus nibh.
+          </p>
+        </mat-card>
+      </div>
+
+      <div class="feature-item">
+        <mat-card>
+          <mat-icon>code</mat-icon>
+          <div class="title mat-subheading-2">Lazy loading</div>
+          <p class="decs mat-body">
+            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed
+            porttitor lectus nibh.
+          </p>
+        </mat-card>
+      </div>
+
+      <div class="feature-item">
+        <mat-card>
+          <mat-icon>code</mat-icon>
+          <div class="title mat-subheading-2">State Management</div>
+          <p class="decs mat-body">
+            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit.
+          </p>
+        </mat-card>
+      </div>
+
+      <div class="feature-item">
+        <mat-card>
+          <mat-icon>code</mat-icon>
+          <div class="title mat-subheading-2">Cypress</div>
+          <p class="decs mat-body">
+            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed
+            porttitor lectus nibh.
+          </p>
+        </mat-card>
+      </div>
+
+      <div class="feature-item">
+        <mat-card>
+          <mat-icon>code</mat-icon>
+          <div class="title mat-subheading-2">Storybook</div>
+          <p class="decs mat-body">
+            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed
+            porttitor lectus nibh.
+          </p>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="get-started">
+  <div class="container" fxLayout="row" fxLayoutAlign="space-around center">
+    <div>START BUILDING ANGULAR APPLICATIONS TODAY </div>
+
+    <a href="https://github.com/truonghungit/angular-ngrx-material-starter" target="_blank" mat-raised-button color="accent">GET STARTED</a>
+  </div>
+</section>
