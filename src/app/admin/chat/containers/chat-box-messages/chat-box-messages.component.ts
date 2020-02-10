@@ -124,9 +124,6 @@ export class ChatBoxMessagesComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
-
     this.messagesGroups$.subscribe(x => {
       console.log(x);
     });
