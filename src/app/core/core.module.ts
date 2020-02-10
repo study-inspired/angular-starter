@@ -34,7 +34,7 @@ import { AppErrorHandler } from './exception';
     }),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     environment.production ? [] : StoreDevtoolsModule.instrument({
-      name: 'angular-ngrx-material-starter-app'
+      name: 'angular-starter-app'
     }),
     EffectsModule.forRoot([
       AppSettingsEffects

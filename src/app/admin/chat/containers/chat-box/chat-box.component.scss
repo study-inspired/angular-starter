@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.chat-box-messages {
+  flex-grow: 1;
+  overflow: auto;
+  background-color: #e9eef4;
+  padding: 24px 0;
+  position: relative;
+}
+
+.chat-box-form {
+  // padding: 0 16px;
+  height: 96px;
+  // background: #cccccc;
+}

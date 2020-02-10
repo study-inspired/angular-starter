@@ -1,0 +1,20 @@
+<ng-container *ngFor="let group of messagesGroups$ | async">
+  <div class="message-group" [ngClass]="{'me': group.sender.id === '1234'}">
+
+    <app-chat-user-avatar [avatarUrl]="group.sender.avatarUrl"> </app-chat-user-avatar>
+
+    <div>
+      <ng-container *ngFor="let message of group.messages; let i = index; ">
+        <app-chat-message 
+          [message]="message" 
+          [ngClass]="{
+            'first-item': i === 0, 
+            'last-item': i === group.messages.length - 1
+            }"></app-chat-message>
+      </ng-container>
+
+      <div class="date-time">{{ group.createdAt }}</div>
+    </div>
+
+  </div>
+</ng-container>

@@ -1,0 +1,11 @@
+.user-avatar {
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-avatar img {
+  max-width: 100%;
+}

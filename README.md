@@ -6,14 +6,14 @@
   Angular 8, NgRx and Angular Material Starter
   <br /><br />
 
-  <a href="https://circleci.com/gh/truonghungit/angular-ngrx-material-starter">
-    <img src="https://img.shields.io/circleci/build/github/truonghungit/angular-ngrx-material-starter/master.svg?style=flat-square" />
+  <a href="https://circleci.com/gh/truonghungit/angular-starter">
+    <img src="https://img.shields.io/circleci/build/github/truonghungit/angular-starter/master.svg?style=flat-square" />
   </a>
   <a href="https://github.com/prettier/prettier">
     <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" />
   </a>
-  <a href="https://github.com/truonghungit/angular-ngrx-material-starter/commits">
-    <img src="https://img.shields.io/github/last-commit/truonghungit/angular-ngrx-material-starter.svg?style=flat-square" />
+  <a href="https://github.com/truonghungit/angular-starter/commits">
+    <img src="https://img.shields.io/github/last-commit/truonghungit/angular-starter.svg?style=flat-square" />
   </a>
   </p>
 
@@ -26,13 +26,13 @@
 
 ## Table of Content
 
-- [Live Demo](https://angular-ngrx-material-starter.firebaseapp.com/)
+- [Live Demo](https://angular-starter.firebaseapp.com/)
 - [Getting Started](#getting-started)
 
 ## Getting started
 
 ```bash
-git clone https://github.com/truonghungit/angular-ngrx-material-starter.git new-project
+git clone https://github.com/truonghungit/angular-starter.git new-project
 cd new-project
 npm install
 npm start

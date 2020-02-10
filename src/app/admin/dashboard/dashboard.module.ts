@@ -16,8 +16,4 @@ import { CONTAINER_COMPONENTS } from './containers';
     CONTAINER_COMPONENTS
   ]
 })
-export class DashboardModule {
-  constructor() {
-    console.log('DashboardModule');
-  }
-}
+export class DashboardModule { }
